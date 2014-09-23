@@ -1,0 +1,126 @@
+set nocompatible
+
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'voithos/vim-multiselect'
+Bundle 'vim-scripts/django.vim'
+Bundle 'lukaszb/vim-web-indent'
+Bundle 'docunext/closetag.vim'
+Bundle 'elzr/vim-json'
+"Bundle 'lepture/vim-javascript'
+Bundle 'Shougo/vimproc'
+Bundle 'tpope/vim-fugitive'
+Bundle 'vim-scripts/genutils'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-repeat'
+Bundle 'tmhedberg/matchit'
+Bundle 'Lokaltog/vim-easymotion'
+"Bundle 'altercation/vim-colors-solarized'
+"Bundle 'bling/vim-airline'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-bufferline'
+Bundle 'kien/ctrlp.vim'
+"Bundle 'kien/rainbow_parentheses.vim'
+"Bundle 'klen/python-mode'
+Bundle 'scrooloose/nerdtree'
+"Bundle 'hallettj/jslint.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'chilicuil/conque'
+Bundle 'Raimondi/delimitMate'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'fholgado/minibufexpl.vim'
+Bundle 'vim-scripts/Pydiction'
+Bundle 'mihaifm/bufstop'
+
+filetype plugin indent on
+
+"NERDTree config
+map <F2> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&  b:NERDTreeType == "primary") | q | endif
+
+"powerline/airline config
+" set laststatus=2
+" set t_Co=256
+" set encoding=utf-8
+" set fillchars+=stl:\ ,stlnc:\
+" let g:airline_theme = "bubblegum"
+
+" "rainbow_parentheses
+" let g:rbpt_colorpairs = [
+"     \ ['brown',       'RoyalBlue3'],
+"     \ ['Darkblue',    'SeaGreen3'],
+"     \ ['darkgray',    'DarkOrchid3'],
+"     \ ['darkgreen',   'firebrick3'],
+"     \ ['darkcyan',    'RoyalBlue3'],
+"     \ ['darkred',     'SeaGreen3'],
+"     \ ['darkmagenta', 'DarkOrchid3'],
+"     \ ['brown',       'firebrick3'],
+"     \ ['gray',        'RoyalBlue3'],
+"     \ ['black',       'SeaGreen3'],
+"     \ ['darkmagenta', 'DarkOrchid3'],
+"     \ ['Darkblue',    'firebrick3'],
+"     \ ['darkgreen',   'RoyalBlue3'],
+"     \ ['darkcyan',    'SeaGreen3'],
+"     \ ['darkred',     'DarkOrchid3'],
+"     \ ['red',         'firebrick3'],
+"     \ ]
+" let g:rbpt_max = 16
+" let g:rbpt_loadcmd_toggle = 0
+
+" au VimEnter * RainbowParenthesesToggle
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
+
+"vim-indent-guides
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesOdd  ctermbg=white
+hi IndentGuidesEven ctermbg=lightgrey
+
+"syntastic
+let g:syntastic_python_checkers = ['pyflakes']
+let g:syntastic_json_checkers = ['jsonlint']
+let g:syntastic_check_on_open = 1
+let g:syntastic_aggregate_errors = 1
+
+"conque
+map <F3> <ESC>:ConqueTermSplit bash<CR>
+
+"pydiction
+let g:pydiction_location='~/.vim/bundle/Pydiction/complete-dict'
+let g:pydiction_menu_height=3
+
+"solarized
+"set t_Co=256
+"set background=dark
+"colorscheme solarized
+
+"ctrlp
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+"set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+let g:ctrlp_working_path_mode = 'ra'
+
+map <leader>gn :CtrlP ~/pnew<CR>
+map <leader>go :CtrlP ~/portal_old/trunk/kt239_portal/<CR>
+
+"buffer stop
+map <leader>b :Bufstop<CR>
+map <leader>a :BufstopModeFast<CR>
+map <C-tab> :BufstopBack<CR>
+map <S-tab> :BufstopForward<CR>
+let g:BufstopAutoSpeedToggle = 1
+

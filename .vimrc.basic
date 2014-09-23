@@ -1,0 +1,125 @@
+set nocompatible
+
+syntax on
+filetype on
+filetype indent on
+filetype plugin on
+
+"文件修改自动载入
+set autoread
+:au BufEnter,BufWinEnter,CursorHold * checktime
+"启动消息关闭
+set shortmess=atI
+
+setlocal omnifunc=syntaxcomplete#Complete
+
+set noswapfile
+
+set autochdir
+set hlsearch
+set incsearch
+"set nowrapscan
+
+"set cursorcolumn
+"set cursorline
+set mouse-=a
+
+set title
+set visualbell t_vb=
+set noerrorbells
+
+set magic
+
+set nu
+set showcmd
+set showmode
+set showmatch
+
+set smartindent
+set autoindent
+
+set tabstop=4 "tab等同空格数
+set shiftwidth=4 "缩进空格数
+set softtabstop=4 "退格空格数
+set noexpandtab
+"set smarttab
+"set expandtab "tab转换为空格
+"set shiftround
+"
+"
+if (has("win32")|| has("win64"))
+	set encoding=gbk
+	set fileencodings=ucs-bom,utf-8,cp936,gbk,gb18030,big5,latin1
+	set termencoding=gbk
+else
+	set encoding=utf-8
+	set fileencodings=ucs-bom,utf-8,cp936,gbk,gb18030,big5,latin1
+	set termencoding=utf-8
+endif
+
+set helplang=cn
+set ffs=unix,dos,mac
+
+set completeopt=longest,menu "设置补全行为
+
+set wildmenu
+set wildignore=*.o,*~,*.pyc,*.class
+set modeline
+
+set t_Co=256
+set background=dark
+colorscheme desert
+"if (has("win32")|| has("win64"))
+"    colorscheme desert
+"else
+"    colorscheme solarized
+"endif
+
+"m = menu T=toolbar r=right scroll L=left scroll
+if has("gui_running")
+	set guioptions-=m
+	set guioptions-=T
+	set guioptions-=r
+	set guioptions-=L
+endif
+
+"显示状态栏
+set laststatus=2
+if has("statusline")
+ 	set statusline=%F%m%r%h%w\ 
+	set statusline+=%=[%{strftime(\"%c\")}]
+	set statusline+=%=[format=%{&ff}]\ 
+	set statusline+=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\"B\":\"\").\"]\"}\ [ascii=\%03.3b]\[hex=\%02.2B]\[pos=%04l,%04v][%p%%]\[len:%L]
+endif
+
+set history=100
+
+inoremap <C-e> <ESC>A
+inoremap <C-a> <ESC>I
+inoremap <C-w> <ESC>ei
+
+inoremap <C-c> <ESC>:q!<CR>
+nnoremap <C-c> <ESC>:q!<CR>
+cnoremap <C-c> <ESC>:q!<CR>
+vnoremap <C-c> <ESC>:q!<CR>
+
+
+let mapleader = ","
+
+"set ruler
+
+set nofoldenable
+"set foldenable
+"set foldmethod=manual
+
+set relativenumber
+
+function! Incr()
+  let a = line('.') - line("'<")
+  let c = virtcol("'<")
+  if a > 0
+    execute 'normal! '.c.'|'.a."\<C-a>"
+  endif
+  normal `<
+endfunction
+vnoremap <C-a> :call Incr()<CR>
