@@ -8,17 +8,18 @@ filetype plugin on
 "文件修改自动载入
 set autoread
 :au BufEnter,BufWinEnter,CursorHold * checktime
-"启动消息关闭 set shortmess=atI
+"启动消息关闭
+set shortmess=atI
 
 setlocal omnifunc=syntaxcomplete#Complete
 
 set noswapfile
 
 set autochdir
-set ignorecase
 set hlsearch
 set incsearch
 set nowrap
+set ic
 "set nowrapscan
 
 "set cursorcolumn
