@@ -38,6 +38,8 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'fholgado/minibufexpl.vim'
 Bundle 'vim-scripts/Pydiction'
 Bundle 'mihaifm/bufstop'
+Bundle 'godlygeek/csapprox'
+Bundle 'sickill/vim-monokai'
 
 filetype plugin indent on
 
@@ -46,11 +48,11 @@ map <F2> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&  b:NERDTreeType == "primary") | q | endif
 
 "powerline/airline config
- set laststatus=2
- set t_Co=256
- set encoding=utf-8
- set fillchars+=stl:\ ,stlnc:\
- let g:airline_theme = "bubblegum"
+"set laststatus=2
+"set t_Co=256
+"set encoding=utf8
+"set fillchars+=stl:\ ,stlnc:\
+"let g:airline_theme = "bubblegum"
 
 " "rainbow_parentheses
 " let g:rbpt_colorpairs = [
@@ -124,3 +126,12 @@ map <C-tab> :BufstopBack<CR>
 map <S-tab> :BufstopForward<CR>
 let g:BufstopAutoSpeedToggle = 1
 
+"CSApprox
+"IMPORTANT: Uncomment one of the following lines to force
+" " using 256 colors (or 88 colors) if your terminal supports it,
+" " " but does not automatically use 256 colors by default.
+" " "set t_Co=88
+set t_Co=256
+let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
+
+colorscheme monokai
