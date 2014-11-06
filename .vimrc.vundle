@@ -2,45 +2,52 @@ set nocompatible
 
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'voithos/vim-multiselect'
-Bundle 'vim-scripts/django.vim'
-Bundle 'lukaszb/vim-web-indent'
-Bundle 'docunext/closetag.vim'
-Bundle 'elzr/vim-json'
-"Bundle 'lepture/vim-javascript'
-Bundle 'Shougo/vimproc'
-Bundle 'tpope/vim-fugitive'
-Bundle 'vim-scripts/genutils'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-repeat'
-Bundle 'tmhedberg/matchit'
-Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'altercation/vim-colors-solarized'
+Plugin 'gmarik/vundle'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'voithos/vim-multiselect'
+Plugin 'vim-scripts/django.vim'
+Plugin 'lukaszb/vim-web-indent'
+Plugin 'docunext/closetag.vim'
+Plugin 'elzr/vim-json'
+Plugin 'lepture/vim-javascript'
+Plugin 'Shougo/vimproc'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-scripts/genutils'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-repeat'
+Plugin 'tmhedberg/matchit'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'altercation/vim-colors-solarized'
 "Bundle 'bling/vim-airline'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'bling/vim-bufferline'
-Bundle 'kien/ctrlp.vim'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'bling/vim-bufferline'
+Plugin 'kien/ctrlp.vim'
 "Bundle 'kien/rainbow_parentheses.vim'
 "Bundle 'klen/python-mode'
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 "Bundle 'hallettj/jslint.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'chilicuil/conque'
-Bundle 'Raimondi/delimitMate'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'fholgado/minibufexpl.vim'
-Bundle 'vim-scripts/Pydiction'
-Bundle 'mihaifm/bufstop'
-Bundle 'godlygeek/csapprox'
-Bundle 'sickill/vim-monokai'
+Plugin 'scrooloose/syntastic'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'chilicuil/conque'
+Plugin 'Raimondi/delimitMate'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'fholgado/minibufexpl.vim'
+Plugin 'vim-scripts/Pydiction'
+Plugin 'mihaifm/bufstop'
+Plugin 'godlygeek/csapprox'
 
+Plugin 'scrooloose/nerdcommenter'
+let mapleader=","
+
+Plugin 'vim-scripts/JSON.vim'
+
+Plugin 'sickill/vim-monokai'
+
+call vundle#end()
 filetype plugin indent on
 
 "NERDTree config
@@ -99,11 +106,6 @@ map <F3> <ESC>:ConqueTermSplit bash<CR>
 let g:pydiction_location='~/.vim/bundle/Pydiction/complete-dict'
 let g:pydiction_menu_height=3
 
-"solarized
-"set t_Co=256
-"set background=dark
-"colorscheme solarized
-
 "ctrlp
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 "set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
@@ -117,7 +119,7 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_working_path_mode = 'ra'
 
 map <leader>gn :CtrlP ~/pnew<CR>
-map <leader>go :CtrlP ~/portal_old/trunk/kt239_portal/<CR>
+map <leader>go :CtrlP ~/workspace/ktsg_portal/trunk/<CR>
 
 "buffer stop
 map <leader>b :Bufstop<CR>
@@ -134,4 +136,19 @@ let g:BufstopAutoSpeedToggle = 1
 set t_Co=256
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 
+" color theme
+set t_Co=256
+set background=light
+"colorscheme solarized
 colorscheme monokai
+
+"JSON.vim
+augroup json_autocmd 
+	autocmd! 
+	autocmd FileType json set autoindent 
+	autocmd FileType json set formatoptions=tcq2l 
+	autocmd FileType json set textwidth=78 shiftwidth=2 
+	autocmd FileType json set softtabstop=2 tabstop=8 
+	autocmd FileType json set expandtab 
+	autocmd FileType json set foldmethod=syntax 
+augroup ENDlugin '

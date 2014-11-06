@@ -23,7 +23,7 @@ set ic
 "set nowrapscan
 
 "set cursorcolumn
-"set cursorline
+set cursorline
 set mouse-=a
 
 set title
@@ -46,7 +46,7 @@ set softtabstop=4 "退格空格数
 set noexpandtab
 "set smarttab
 "set expandtab "tab转换为空格
-"set shiftround
+set shiftround
 "
 "
 if (has("win32")|| has("win64"))
@@ -96,16 +96,6 @@ endif
 
 set history=100
 
-inoremap <C-e> <ESC>A
-inoremap <C-a> <ESC>I
-inoremap <C-w> <ESC>ei
-
-inoremap <C-c> <ESC>:q!<CR>
-nnoremap <C-c> <ESC>:q!<CR>
-cnoremap <C-c> <ESC>:q!<CR>
-vnoremap <C-c> <ESC>:q!<CR>
-
-
 let mapleader = ","
 
 "set ruler
@@ -125,3 +115,24 @@ function! Incr()
   normal `<
 endfunction
 vnoremap <C-a> :call Incr()<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" my mapping
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+inoremap <C-e> <ESC>A
+inoremap <C-a> <ESC>I
+inoremap <C-w> <ESC>ei
+
+"inoremap <C-c> <ESC>:q!<CR>
+"nnoremap <C-c> <ESC>:q!<CR>
+"cnoremap <C-c> <ESC>:q!<CR>
+"vnoremap <C-c> <ESC>:q!<CR>
+
+nnoremap 0 ^
+nnoremap ^ 0
+nnoremap ' $
+
+xnoremap p pgvy
+
+set splitright
+set splitbelow
