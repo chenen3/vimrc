@@ -10,7 +10,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'voithos/vim-multiselect'
 Plugin 'vim-scripts/django.vim'
 Plugin 'lukaszb/vim-web-indent'
-Plugin 'docunext/closetag.vim'
+"Plugin 'docunext/closetag.vim'
 Plugin 'elzr/vim-json'
 Plugin 'lepture/vim-javascript'
 Plugin 'Shougo/vimproc'
@@ -153,8 +153,7 @@ augroup json_autocmd
 	autocmd FileType json set foldmethod=syntax 
 augroup ENDlugin '
 
-"in case your cscope execute is not in system path.
-" let g:cscope_cmd = 'D:/tools/vim/cscope.exe'
+" cscope
 " s: Find this C symbol
 map <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
 " g: Find this definition
@@ -172,3 +171,18 @@ map <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
 " i: Find files #including this file
 map <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
 map <leader>l :call ToggleLocationList()<CR>))))))
+
+"if has("cscope")
+	"set csprg=/usr/local/bin/cscope
+	"set csto=0
+	"set cst
+	"set nocsverb
+	"" add any database in current directory
+	"if filereadable("cscope.out")
+		"cs add cscope.out
+	"" else add database pointed to by environment
+	"elseif $CSCOPE_DB != ""
+		"cs add $CSCOPE_DB
+	"endif
+	"set csverb
+"endif

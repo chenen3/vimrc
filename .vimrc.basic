@@ -136,3 +136,8 @@ xnoremap p pgvy
 
 set splitright
 set splitbelow
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ctags
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set tags=~/workspace/ktsg_portal/trunk/tags
