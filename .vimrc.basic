@@ -46,7 +46,7 @@ set softtabstop=4 "退格空格数
 set noexpandtab
 "set smarttab
 "set expandtab "tab转换为空格
-set shiftround
+"set shiftround
 "
 "
 if (has("win32")|| has("win64"))
@@ -121,7 +121,7 @@ vnoremap <C-a> :call Incr()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 inoremap <C-e> <ESC>A
 inoremap <C-a> <ESC>I
-inoremap <C-w> <ESC>ei
+"inoremap <C-w> <ESC>ei
 
 "inoremap <C-c> <ESC>:q!<CR>
 "nnoremap <C-c> <ESC>:q!<CR>
@@ -130,7 +130,7 @@ inoremap <C-w> <ESC>ei
 
 nnoremap 0 ^
 nnoremap ^ 0
-nnoremap ' $
+nnoremap ; $
 
 xnoremap p pgvy
 
@@ -140,4 +140,9 @@ set splitbelow
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctags
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set tags=~/workspace/ktsg_portal/trunk/tags
+set tags+=~/workspace/ktsg_portal/trunk/tags,~/workspace/ktsg_portal/tools/tags
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" python indentation for ktportal 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType python set tabstop=4 | set softtabstop=4 | set noexpandtab

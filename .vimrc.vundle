@@ -27,7 +27,7 @@ Plugin 'Lokaltog/vim-powerline'
 Plugin 'bling/vim-bufferline'
 Plugin 'kien/ctrlp.vim'
 "Bundle 'kien/rainbow_parentheses.vim'
-Plugin 'klen/python-mode'
+"Plugin 'klen/python-mode'
 Plugin 'scrooloose/nerdtree'
 "Bundle 'hallettj/jslint.vim'
 Plugin 'scrooloose/syntastic'
@@ -143,15 +143,15 @@ set background=light
 colorscheme monokai
 
 "JSON.vim
-augroup json_autocmd 
-	autocmd! 
-	autocmd FileType json set autoindent 
-	autocmd FileType json set formatoptions=tcq2l 
-	autocmd FileType json set textwidth=78 shiftwidth=2 
-	autocmd FileType json set softtabstop=2 tabstop=8 
-	autocmd FileType json set expandtab 
-	autocmd FileType json set foldmethod=syntax 
-augroup ENDlugin '
+"augroup json_autocmd 
+	"autocmd! 
+	"autocmd FileType json set autoindent 
+	"autocmd FileType json set formatoptions=tcq2l 
+	"autocmd FileType json set textwidth=78 shiftwidth=2 
+	"autocmd FileType json set softtabstop=2 tabstop=8 
+	"autocmd FileType json set expandtab 
+	"autocmd FileType json set foldmethod=syntax 
+"augroup ENDlugin '
 
 " cscope
 " s: Find this C symbol
