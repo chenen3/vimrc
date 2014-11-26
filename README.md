@@ -1,2 +1,2 @@
-My vimrc
+TamamaGG's vimrc
 =====
