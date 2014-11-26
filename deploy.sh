@@ -1,4 +1,5 @@
 # install ctags, cscope
+sudo apt-install update
 sudo apt-install ctags
 sudo apt-install cscope
 
