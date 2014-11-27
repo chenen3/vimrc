@@ -146,4 +146,4 @@ set tags+=~/workspace/ktsg_portal/trunk/tags,~/workspace/ktsg_portal/tools/tags
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " spec file type config 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType python set tabstop=4 | set softtabstop=4 | set expandtab
+autocmd FileType python set tabstop=4 | set softtabstop=4 | set noexpandtab
