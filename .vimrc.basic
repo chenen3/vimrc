@@ -14,12 +14,13 @@ set shortmess=atI
 setlocal omnifunc=syntaxcomplete#Complete
 
 set noswapfile
-
 set autochdir
+set nowrap
+
 set hlsearch
 set incsearch
-set nowrap
-set ic
+set smartcase
+set ignorecase
 "set nowrapscan
 
 "set cursorcolumn
@@ -34,6 +35,7 @@ set novisualbell
 set magic
 
 set nu
+"set relativenumber
 set showcmd
 set showmode
 set showmatch
@@ -105,8 +107,6 @@ set nofoldenable
 "set foldenable
 "set foldmethod=manual
 
-set relativenumber
-
 function! Incr()
   let a = line('.') - line("'<")
   let c = virtcol("'<")
@@ -144,6 +144,6 @@ set splitbelow
 set tags+=~/workspace/ktsg_portal/trunk/tags,~/workspace/ktsg_portal/tools/tags
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" python indentation for ktportal 
+" spec file type config 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType python set tabstop=4 | set softtabstop=4 | set noexpandtab
+autocmd FileType python set tabstop=4 | set softtabstop=4 | set expandtab
