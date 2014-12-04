@@ -199,7 +199,9 @@ map <leader>l :call ToggleLocationList()<CR>))))))
 colorscheme monokai
 "colorscheme desert
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " delete space end of line in python filetype
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 func! DeleteTrailingWS()
 	exe "normal mz"
 	%s/\s\+$//ge
@@ -209,4 +211,4 @@ endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.json :call DeleteTrailingWS()
 
-noremap <leader>rmsp :call DeleteTrailingWS()<CR>
+noremap <leader>w :call DeleteTrailingWS()<CR>
