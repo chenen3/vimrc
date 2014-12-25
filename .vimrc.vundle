@@ -6,37 +6,20 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/vundle'
-"Plugin 'tpope/vim-unimpaired'
-"Plugin 'voithos/vim-multiselect'
-"Plugin 'vim-scripts/django.vim'
-"Plugin 'lukaszb/vim-web-indent'
-"Plugin 'docunext/closetag.vim'
 Plugin 'elzr/vim-json'
 Plugin 'lepture/vim-javascript'
 Plugin 'Shougo/vimproc'
 Plugin 'tpope/vim-fugitive'
-"Plugin 'vim-scripts/genutils'
-"Plugin 'tpope/vim-surround'
-"Plugin 'tpope/vim-commentary'
-"Plugin 'tpope/vim-repeat'
-"Plugin 'tmhedberg/matchit'
-"Plugin 'Lokaltog/vim-easymotion'
-"Bundle 'bling/vim-airline'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'bling/vim-bufferline'
 Plugin 'kien/ctrlp.vim'
-"Bundle 'kien/rainbow_parentheses.vim'
 "Plugin 'klen/python-mode'
 Plugin 'scrooloose/nerdtree'
-"Bundle 'hallettj/jslint.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'chilicuil/conque'
 Plugin 'Raimondi/delimitMate'
-"Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'fholgado/minibufexpl.vim'
-"Plugin 'vim-scripts/Pydiction'
-"Plugin 'mihaifm/bufstop'
 "Plugin 'godlygeek/csapprox'
 
 Plugin 'scrooloose/nerdcommenter'
@@ -51,8 +34,6 @@ Plugin 'altercation/vim-colors-solarized'
 " markdown
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-"Plugin 'tpope/vim-markdown'
-"autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 call vundle#end()
 filetype plugin indent on
@@ -60,45 +41,6 @@ filetype plugin indent on
 "NERDTree config
 map <F2> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&  b:NERDTreeType == "primary") | q | endif
-
-"powerline/airline config
-"set laststatus=2
-"set t_Co=256
-"set encoding=utf8
-"set fillchars+=stl:\ ,stlnc:\
-"let g:airline_theme = "bubblegum"
-
-" "rainbow_parentheses
-" let g:rbpt_colorpairs = [
-"     \ ['brown',       'RoyalBlue3'],
-"     \ ['Darkblue',    'SeaGreen3'],
-"     \ ['darkgray',    'DarkOrchid3'],
-"     \ ['darkgreen',   'firebrick3'],
-"     \ ['darkcyan',    'RoyalBlue3'],
-"     \ ['darkred',     'SeaGreen3'],
-"     \ ['darkmagenta', 'DarkOrchid3'],
-"     \ ['brown',       'firebrick3'],
-"     \ ['gray',        'RoyalBlue3'],
-"     \ ['black',       'SeaGreen3'],
-"     \ ['darkmagenta', 'DarkOrchid3'],
-"     \ ['Darkblue',    'firebrick3'],
-"     \ ['darkgreen',   'RoyalBlue3'],
-"     \ ['darkcyan',    'SeaGreen3'],
-"     \ ['darkred',     'DarkOrchid3'],
-"     \ ['red',         'firebrick3'],
-"     \ ]
-" let g:rbpt_max = 16
-" let g:rbpt_loadcmd_toggle = 0
-
-" au VimEnter * RainbowParenthesesToggle
-" au Syntax * RainbowParenthesesLoadRound
-" au Syntax * RainbowParenthesesLoadSquare
-" au Syntax * RainbowParenthesesLoadBraces
-
-"vim-indent-guides
-let g:indent_guides_auto_colors = 0
-hi IndentGuidesOdd  ctermbg=white
-hi IndentGuidesEven ctermbg=lightgrey
 
 "syntastic
 let g:syntastic_python_checkers = ['pyflakes']
@@ -109,52 +51,33 @@ let g:syntastic_aggregate_errors = 1
 "conque
 map <F3> <ESC>:ConqueTermSplit bash<CR>
 
-"pydiction
-let g:pydiction_location='~/.vim/bundle/Pydiction/complete-dict'
-let g:pydiction_menu_height=3
-
-"ctrlp
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ctrlp
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 "set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-
-"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
 let g:ctrlp_working_path_mode = 'ra'
+map <leader>go :CtrlP ~/ktsg_portal/trunk/<CR>
 
-map <leader>gn :CtrlP ~/pnew<CR>
-map <leader>go :CtrlP ~/workspace/ktsg_portal/trunk/<CR>
-
-"buffer stop
-map <leader>b :Bufstop<CR>
-map <leader>a :BufstopModeFast<CR>
-map <C-tab> :BufstopBack<CR>
-map <S-tab> :BufstopForward<CR>
-let g:BufstopAutoSpeedToggle = 1
-
-"CSApprox
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CSApprox
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "IMPORTANT: Uncomment one of the following lines to force
-" " using 256 colors (or 88 colors) if your terminal supports it,
-" " " but does not automatically use 256 colors by default.
-" " "set t_Co=88
+"using 256 colors (or 88 colors) if your terminal supports it,
+"but does not automatically use 256 colors by default.
+"
+"set t_Co=88
 "set t_Co=256
 "let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 
-"JSON.vim
-"augroup json_autocmd 
-	"autocmd! 
-	"autocmd FileType json set autoindent 
-	"autocmd FileType json set formatoptions=tcq2l 
-	"autocmd FileType json set textwidth=78 shiftwidth=2 
-	"autocmd FileType json set softtabstop=2 tabstop=8 
-	"autocmd FileType json set expandtab 
-	"autocmd FileType json set foldmethod=syntax 
-"augroup ENDlugin '
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " cscope
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " s: Find this C symbol
 map <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
 " g: Find this definition
@@ -173,21 +96,6 @@ map <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
 map <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
 map <leader>l :call ToggleLocationList()<CR>))))))
 
-"if has("cscope")
-	"set csprg=/usr/local/bin/cscope
-	"set csto=0
-	"set cst
-	"set nocsverb
-	"" add any database in current directory
-	"if filereadable("cscope.out")
-		"cs add cscope.out
-	"" else add database pointed to by environment
-	"elseif $CSCOPE_DB != ""
-		"cs add $CSCOPE_DB
-	"endif
-	"set csverb
-"endif
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " color theme
@@ -197,18 +105,15 @@ map <leader>l :call ToggleLocationList()<CR>))))))
 "let g:solarized_termcolors=256 
 "colorscheme solarized
 colorscheme monokai
-"colorscheme desert
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" delete space end of line in python filetype
+" del trailing whitespace
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-func! DeleteTrailingWS()
+func! DeleteTrailingWhiteSpace()
 	exe "normal mz"
 	%s/\s\+$//ge
 	exe "normal `z"
 endfunc
-
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.json :call DeleteTrailingWS()
-
-noremap <leader>w :call DeleteTrailingWS()<CR>
+"autocmd BufWrite *.py :call DeleteTrailingWhiteSpace()
+autocmd BufWrite *.json :call DeleteTrailingWhiteSpace()
+noremap <leader>w :call DeleteTrailingWhiteSpace()<CR>
