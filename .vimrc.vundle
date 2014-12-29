@@ -36,6 +36,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
 " web developement
+Plugin 'jshint/jshint'
 Plugin 'tpope/vim-surround'
 Plugin 'mattn/emmet-vim'
 Plugin 'skammer/vim-css-color'
