@@ -15,8 +15,8 @@ Plugin 'bling/vim-bufferline'
 Plugin 'kien/ctrlp.vim'
 "Plugin 'klen/python-mode'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'terryma/vim-multiple-cursors'
 Plugin 'chilicuil/conque'
 Plugin 'Raimondi/delimitMate'
 Plugin 'fholgado/minibufexpl.vim'
@@ -38,8 +38,11 @@ Plugin 'plasticboy/vim-markdown'
 " web developement
 Plugin 'jshint/jshint'
 Plugin 'tpope/vim-surround'
-Plugin 'mattn/emmet-vim'
-Plugin 'skammer/vim-css-color'
+"Plugin 'mattn/emmet-vim'
+"Plugin 'skammer/vim-css-color'
+
+Plugin 'Yggdroot/indentLine'
+Plugin 'tpope/vim-repeat'
 
 call vundle#end()
 filetype plugin indent on
@@ -123,3 +126,6 @@ endfunc
 "autocmd BufWrite *.py :call DeleteTrailingWhiteSpace()
 autocmd BufWrite *.json :call DeleteTrailingWhiteSpace()
 noremap <leader>w :call DeleteTrailingWhiteSpace()<CR>
+
+"indentline
+let g:indentLine_color_term = 239

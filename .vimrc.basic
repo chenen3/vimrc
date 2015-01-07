@@ -8,6 +8,7 @@ filetype plugin on
 "文件修改自动载入
 set autoread
 :au BufEnter,BufWinEnter,CursorHold * checktime
+
 "启动消息关闭
 set shortmess=atI
 
@@ -23,7 +24,7 @@ set smartcase
 set ignorecase
 "set nowrapscan
 
-"set cursorcolumn
+set cursorcolumn
 set cursorline
 set mouse-=a
 
@@ -47,8 +48,8 @@ set tabstop=4 "tab等同空格数
 set shiftwidth=4 "缩进空格数
 set softtabstop=4 "退格空格数
 set noexpandtab
-set smarttab
-set shiftround
+"set smarttab
+"set shiftround
 
 if (has("win32")|| has("win64"))
 	set encoding=gbk
@@ -130,7 +131,8 @@ set splitbelow
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctags
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set tags+=~/workspace/ktsg_portal/trunk/tags,~/workspace/ktsg_portal/tools/tags
+set tags+=~/ktsg_new/tags
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " spec file type config 
