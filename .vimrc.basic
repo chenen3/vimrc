@@ -22,9 +22,7 @@ set hlsearch
 set incsearch
 set smartcase
 set ignorecase
-"set nowrapscan
 
-set cursorcolumn
 set cursorline
 set mouse-=a
 
@@ -36,7 +34,6 @@ set novisualbell
 set magic
 
 set nu
-"set relativenumber
 set showcmd
 set showmode
 set showmatch
@@ -48,8 +45,6 @@ set tabstop=4 "tab等同空格数
 set shiftwidth=4 "缩进空格数
 set softtabstop=4 "退格空格数
 set noexpandtab
-"set smarttab
-"set shiftround
 
 if (has("win32")|| has("win64"))
 	set encoding=gbk
@@ -69,15 +64,6 @@ set completeopt=longest,menu "设置补全行为
 set wildmenu
 set wildignore=*.o,*~,*.pyc,*.class
 set modeline
-
-set t_Co=256
-set background=dark
-colorscheme desert
-"if (has("win32")|| has("win64"))
-"    colorscheme desert
-"else
-"    colorscheme solarized
-"endif
 
 "m = menu T=toolbar r=right scroll L=left scroll
 if has("gui_running")
@@ -100,11 +86,7 @@ set history=100
 
 let mapleader = ","
 
-"set ruler
-
 set nofoldenable
-"set foldenable
-"set foldmethod=manual
 
 function! Incr()
   let a = line('.') - line("'<")
@@ -128,19 +110,16 @@ xnoremap p pgvy
 set splitright
 set splitbelow
 
+inoremap <C-e> <ESC>A
+inoremap <C-a> <ESC>I
+inoremap <C-w> <ESC>ea
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctags
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set tags+=~/ktsg_new/tags
+set tags+=~/ktsg_new/tags,~/workspace/trunk/tags
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " spec file type config 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType python set tabstop=4 | set softtabstop=4 | set expandtab
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" spec file type config 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-inoremap <C-e> <ESC>A
-inoremap <C-a> <ESC>I
-inoremap <C-w> <ESC>ea
