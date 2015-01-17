@@ -25,7 +25,7 @@ Plugin 'fholgado/minibufexpl.vim'
 Plugin 'scrooloose/nerdcommenter'
 let mapleader=","
 
-Plugin 'vim-scripts/cscope.vim'
+"Plugin 'vim-scripts/cscope.vim'
 
 " color theme
 Plugin 'sickill/vim-monokai'
@@ -43,6 +43,8 @@ Plugin 'tpope/vim-surround'
 
 Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-repeat'
+"Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'kien/rainbow_parentheses.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -109,11 +111,14 @@ map <leader>l :call ToggleLocationList()<CR>))))))
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " color theme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"syntax enable
-"set background=dark
+syntax enable
+set background=dark
+"set background=light
 "let g:solarized_termcolors=256 
-"colorscheme solarized
-colorscheme monokai
+colorscheme solarized
+
+"colorscheme monokai
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " del trailing whitespace
@@ -129,3 +134,9 @@ noremap <leader>w :call DeleteTrailingWhiteSpace()<CR>
 
 "indentline
 let g:indentLine_color_term = 239
+
+"inden guide
+"hi IndentGuidesOdd  ctermbg=black
+"hi IndentGuidesEven ctermbg=darkgrey
+"hi IndentGuidesOdd  ctermbg=white
+"hi IndentGuidesEven ctermbg=lightgrey
