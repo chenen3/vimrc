@@ -11,7 +11,7 @@ Plugin 'lepture/vim-javascript'
 Plugin 'Shougo/vimproc'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/vim-powerline'
-Plugin 'bling/vim-bufferline'
+"Plugin 'bling/vim-bufferline'
 Plugin 'kien/ctrlp.vim'
 "Plugin 'klen/python-mode'
 Plugin 'scrooloose/nerdtree'
@@ -45,6 +45,8 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-repeat'
 "Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'kien/rainbow_parentheses.vim'
+
+"Plugin 'bling/vim-airline'
 
 call vundle#end()
 filetype plugin indent on
@@ -114,11 +116,9 @@ map <leader>l :call ToggleLocationList()<CR>))))))
 syntax enable
 set background=dark
 "set background=light
-"let g:solarized_termcolors=256 
+"let g:solarized_termcolors=256
 colorscheme solarized
-
 "colorscheme monokai
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " del trailing whitespace
@@ -129,7 +129,7 @@ func! DeleteTrailingWhiteSpace()
 	exe "normal `z"
 endfunc
 "autocmd BufWrite *.py :call DeleteTrailingWhiteSpace()
-autocmd BufWrite *.json :call DeleteTrailingWhiteSpace()
+"autocmd BufWrite *.json :call DeleteTrailingWhiteSpace()
 noremap <leader>w :call DeleteTrailingWhiteSpace()<CR>
 
 "indentline
@@ -140,3 +140,16 @@ let g:indentLine_color_term = 239
 "hi IndentGuidesEven ctermbg=darkgrey
 "hi IndentGuidesOdd  ctermbg=white
 "hi IndentGuidesEven ctermbg=lightgrey
+
+"set laststatus=2
+"let g:airline_powerline_fonts = 1
+"let g:airline_theme='luna'
+
+"powerline
+set encoding=utf-8
+set fillchars+=stl:\ ,stlnc:\
+set laststatus=2
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+"set -g default-terminal "screen-256color"
+set t_Co=256
+let g:Powerline_symbols = 'fancy'

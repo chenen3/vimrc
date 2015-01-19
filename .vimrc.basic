@@ -76,9 +76,9 @@ endif
 "显示状态栏
 set laststatus=2
 if has("statusline")
- 	set statusline=%F%m%r%h%w\ 
+	set statusline=%F%m%r%h%w\
 	set statusline+=%=[%{strftime(\"%c\")}]
-	set statusline+=%=[format=%{&ff}]\ 
+	set statusline+=%=[format=%{&ff}]\
 	set statusline+=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\"B\":\"\").\"]\"}\ [ascii=\%03.3b]\[hex=\%02.2B]\[pos=%04l,%04v][%p%%]\[len:%L]
 endif
 
@@ -120,6 +120,8 @@ inoremap <C-w> <ESC>ea
 set tags+=~/ktsg_new/tags,~/workspace/trunk/tags
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" spec file type config 
+" spec file type config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType python set tabstop=4 | set softtabstop=4 | set expandtab
+
+"set guifont=Monospace\ 10
