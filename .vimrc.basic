@@ -112,16 +112,14 @@ set splitbelow
 
 inoremap <C-e> <ESC>A
 inoremap <C-a> <ESC>I
-inoremap <C-w> <ESC>ea
+inoremap <C-w> <ESC>ei
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctags
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set tags+=~/ktsg_new/tags,~/workspace/trunk/tags
+set tags+=~/new_ktsg/static/tags,~/old_ktsg/trunk/tags
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " spec file type config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType python set tabstop=4 | set softtabstop=4 | set expandtab
-
-"set guifont=Monospace\ 10

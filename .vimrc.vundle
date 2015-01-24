@@ -11,15 +11,14 @@ Plugin 'lepture/vim-javascript'
 Plugin 'Shougo/vimproc'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/vim-powerline'
-"Plugin 'bling/vim-bufferline'
 Plugin 'kien/ctrlp.vim'
-"Plugin 'klen/python-mode'
+Plugin 'klen/python-mode'
 Plugin 'scrooloose/nerdtree'
-"Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 "Plugin 'terryma/vim-multiple-cursors'
 Plugin 'chilicuil/conque'
 Plugin 'Raimondi/delimitMate'
-Plugin 'fholgado/minibufexpl.vim'
+"Plugin 'fholgado/minibufexpl.vim'
 "Plugin 'godlygeek/csapprox'
 
 Plugin 'scrooloose/nerdcommenter'
@@ -36,17 +35,15 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
 " web developement
-Plugin 'jshint/jshint'
+"Plugin 'jshint/jshint'
 Plugin 'tpope/vim-surround'
 "Plugin 'mattn/emmet-vim'
-"Plugin 'skammer/vim-css-color'
 
 Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-repeat'
-"Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'kien/rainbow_parentheses.vim'
 
-"Plugin 'bling/vim-airline'
+Plugin 'wookiehangover/jshint.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -55,11 +52,19 @@ filetype plugin indent on
 map <F2> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&  b:NERDTreeType == "primary") | q | endif
 
-"syntastic
-let g:syntastic_python_checkers = ['pyflakes']
-let g:syntastic_json_checkers = ['jsonlint']
-let g:syntastic_check_on_open = 1
-let g:syntastic_aggregate_errors = 1
+""syntastic
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+
+"let g:syntastic_python_checkers = ['pylint']
+""let g:syntastic_json_checkers = ['jsonlint']
+"let g:syntastic_javascript_checkers = ['jshint']
 
 "conque
 map <F3> <ESC>:ConqueTermSplit bash<CR>
@@ -153,3 +158,4 @@ set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 "set -g default-terminal "screen-256color"
 set t_Co=256
 let g:Powerline_symbols = 'fancy'
+set showtabline=2
