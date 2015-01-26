@@ -18,7 +18,7 @@ Plugin 'scrooloose/syntastic'
 "Plugin 'terryma/vim-multiple-cursors'
 Plugin 'chilicuil/conque'
 Plugin 'Raimondi/delimitMate'
-"Plugin 'fholgado/minibufexpl.vim'
+Plugin 'fholgado/minibufexpl.vim'
 "Plugin 'godlygeek/csapprox'
 
 Plugin 'scrooloose/nerdcommenter'
@@ -158,4 +158,4 @@ set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 "set -g default-terminal "screen-256color"
 set t_Co=256
 let g:Powerline_symbols = 'fancy'
-set showtabline=2
+"set showtabline=2
