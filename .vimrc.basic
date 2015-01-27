@@ -45,7 +45,7 @@ set autoindent
 set tabstop=4 "tab等同空格数
 set shiftwidth=4 "缩进空格数
 set softtabstop=4 "退格空格数
-set noexpandtab
+set expandtab
 
 if (has("win32")|| has("win64"))
 	set encoding=gbk
