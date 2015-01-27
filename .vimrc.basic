@@ -37,6 +37,7 @@ set nu
 set showcmd
 set showmode
 set showmatch
+set list listchars=eol:¬,tab:▸\ ,trail:.,
 
 set smartindent
 set autoindent
