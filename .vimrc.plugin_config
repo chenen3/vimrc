@@ -1,0 +1,73 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Conque
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <F3> <ESC>:ConqueTermSplit bash<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ctrlp
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+let g:ctrlp_working_path_mode = 'ra'
+map <leader>go :CtrlP ~/ktsg_portal/trunk/<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" color theme
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+syntax enable
+set background=dark
+colorscheme solarized
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" del trailing whitespace
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+func! DeleteTrailingWhiteSpace()
+    exe "normal mz"
+    %s/\s\+$//ge
+    exe "normal `z"
+endfunc
+noremap <leader>w :call DeleteTrailingWhiteSpace()<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" indentline
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:indentLine_color_term = 239
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" powerline
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set encoding=utf-8
+set fillchars+=stl:\ ,stlnc:\
+set laststatus=2
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set t_Co=256
+let g:Powerline_symbols = 'fancy'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree config
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <F2> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&  b:NERDTreeType == "primary") | q | endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" cscope
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>fs :call CscopeFind('s', expand('<cword>'))<CR> "Find this C symbol
+map <leader>fg :call CscopeFind('g', expand('<cword>'))<CR> "Find this definition
+map <leader>fd :call CscopeFind('d', expand('<cword>'))<CR> "Find functions called by this function
+map <leader>fc :call CscopeFind('c', expand('<cword>'))<CR> "Find functions calling this function
+map <leader>ft :call CscopeFind('t', expand('<cword>'))<CR> "Find this text string
+map <leader>fe :call CscopeFind('e', expand('<cword>'))<CR> "Find this egrep pattern
+map <leader>ff :call CscopeFind('f', expand('<cword>'))<CR> "Find this file
+map <leader>fi :call CscopeFind('i', expand('<cword>'))<CR> "Find files #including this file
+map <leader>l :call ToggleLocationList()<CR>))))))

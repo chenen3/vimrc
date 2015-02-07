@@ -15,147 +15,22 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'klen/python-mode'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-"Plugin 'terryma/vim-multiple-cursors'
 Plugin 'chilicuil/conque'
 Plugin 'Raimondi/delimitMate'
 Plugin 'fholgado/minibufexpl.vim'
-"Plugin 'godlygeek/csapprox'
-
 Plugin 'scrooloose/nerdcommenter'
-let mapleader=","
-
-"Plugin 'vim-scripts/cscope.vim'
-
-" color theme
 Plugin 'sickill/vim-monokai'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-surround'
+Plugin 'Yggdroot/indentLine'
+Plugin 'tpope/vim-repeat'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'wookiehangover/jshint.vim'
+"Plugin 'vim-scripts/cscope.vim'
 
 " markdown
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
-" web developement
-"Plugin 'jshint/jshint'
-Plugin 'tpope/vim-surround'
-"Plugin 'mattn/emmet-vim'
-
-Plugin 'Yggdroot/indentLine'
-Plugin 'tpope/vim-repeat'
-Plugin 'kien/rainbow_parentheses.vim'
-
-Plugin 'wookiehangover/jshint.vim'
-
 call vundle#end()
 filetype plugin indent on
-
-"NERDTree config
-map <F2> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&  b:NERDTreeType == "primary") | q | endif
-
-""syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-
-"let g:syntastic_python_checkers = ['pylint']
-""let g:syntastic_json_checkers = ['jsonlint']
-"let g:syntastic_javascript_checkers = ['jshint']
-
-"conque
-map <F3> <ESC>:ConqueTermSplit bash<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ctrlp
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-"set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-let g:ctrlp_working_path_mode = 'ra'
-map <leader>go :CtrlP ~/ktsg_portal/trunk/<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CSApprox
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"IMPORTANT: Uncomment one of the following lines to force
-"using 256 colors (or 88 colors) if your terminal supports it,
-"but does not automatically use 256 colors by default.
-"
-"set t_Co=88
-"set t_Co=256
-"let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" cscope
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" s: Find this C symbol
-map <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
-" g: Find this definition
-map <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>
-" d: Find functions called by this function
-map <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>
-" c: Find functions calling this function
-map <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>
-" t: Find this text string
-map <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>
-" e: Find this egrep pattern
-map <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
-" f: Find this file
-map <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
-" i: Find files #including this file
-map <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
-map <leader>l :call ToggleLocationList()<CR>))))))
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" color theme
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax enable
-set background=dark
-"set background=light
-"let g:solarized_termcolors=256
-colorscheme solarized
-"colorscheme monokai
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" del trailing whitespace
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-func! DeleteTrailingWhiteSpace()
-	exe "normal mz"
-	%s/\s\+$//ge
-	exe "normal `z"
-endfunc
-"autocmd BufWrite *.py :call DeleteTrailingWhiteSpace()
-"autocmd BufWrite *.json :call DeleteTrailingWhiteSpace()
-noremap <leader>w :call DeleteTrailingWhiteSpace()<CR>
-
-"indentline
-let g:indentLine_color_term = 239
-
-"inden guide
-"hi IndentGuidesOdd  ctermbg=black
-"hi IndentGuidesEven ctermbg=darkgrey
-"hi IndentGuidesOdd  ctermbg=white
-"hi IndentGuidesEven ctermbg=lightgrey
-
-"set laststatus=2
-"let g:airline_powerline_fonts = 1
-"let g:airline_theme='luna'
-
-"powerline
-set encoding=utf-8
-set fillchars+=stl:\ ,stlnc:\
-set laststatus=2
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-"set -g default-terminal "screen-256color"
-set t_Co=256
-let g:Powerline_symbols = 'fancy'
-"set showtabline=2
