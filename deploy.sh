@@ -1,5 +1,5 @@
 # clone vimrc
-cp .vimrc .vimrc.basic .vimrc.vundle ~
+cp .vimrc* ~
 
 # init vundle
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
