@@ -32,5 +32,7 @@ Plugin 'wookiehangover/jshint.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
+Plugin 'maksimr/vim-jsbeautify'
+
 call vundle#end()
 filetype plugin indent on

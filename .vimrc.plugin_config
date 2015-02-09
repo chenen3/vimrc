@@ -71,3 +71,9 @@ map <leader>fe :call CscopeFind('e', expand('<cword>'))<CR> "Find this egrep pat
 map <leader>ff :call CscopeFind('f', expand('<cword>'))<CR> "Find this file
 map <leader>fi :call CscopeFind('i', expand('<cword>'))<CR> "Find files #including this file
 map <leader>l :call ToggleLocationList()<CR>))))))
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" jsbeautify
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType javascript noremap <buffer> <leader>js :call JsBeautify()<cr>
+autocmd FileType javascript vnoremap <buffer> <leader>js :call RangeJsBeautify()<cr>
