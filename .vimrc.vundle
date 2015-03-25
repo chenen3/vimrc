@@ -12,7 +12,7 @@ Plugin 'Shougo/vimproc'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'kien/ctrlp.vim'
-Plugin 'klen/python-mode'
+"Plugin 'klen/python-mode'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'chilicuil/conque'
@@ -27,6 +27,8 @@ Plugin 'tpope/vim-repeat'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'wookiehangover/jshint.vim'
 "Plugin 'vim-scripts/cscope.vim'
+Plugin 'Valloric/YouCompleteMe'
+
 
 " markdown
 Plugin 'godlygeek/tabular'

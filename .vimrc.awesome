@@ -77,12 +77,12 @@ endif
 
 "显示状态栏
 set laststatus=2
-"if has("statusline")
-    "set statusline=%F%m%r%h%w\
-    "set statusline+=%=[%{strftime(\"%c\")}]
-    "set statusline+=%=[format=%{&ff}]\
-    "set statusline+=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\"B\":\"\").\"]\"}\ [ascii=\%03.3b]\[hex=\%02.2B]\[pos=%04l,%04v][%p%%]\[len:%L]
-"endif
+if has("statusline")
+    set statusline=%F%m%r%h%w\
+    set statusline+=%=[%{strftime(\"%c\")}]
+    set statusline+=%=[format=%{&ff}]\
+    set statusline+=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\"B\":\"\").\"]\"}\ [ascii=\%03.3b]\[hex=\%02.2B]\[pos=%04l,%04v][%p%%]\[len:%L]
+endif
 
 set history=100
 
@@ -127,7 +127,7 @@ set tags+=~/new_ktsg/static/tags,~/old_ktsg/trunk/tags
 autocmd FileType python set tabstop=4 | set softtabstop=4 | set expandtab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" from the ultimate vimrc...
+" awesome vimrc...
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <space> /
 map <c-space> ?
@@ -136,14 +136,3 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-
-"Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-    \ if line("'\") > 0 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-Remember info about open buffers on close
-set viminfo^=%
-
-" Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
