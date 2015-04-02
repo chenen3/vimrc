@@ -15,7 +15,6 @@ Plugin 'kien/ctrlp.vim'
 "Plugin 'klen/python-mode'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'chilicuil/conque'
 Plugin 'Raimondi/delimitMate'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'scrooloose/nerdcommenter'
@@ -26,15 +25,13 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-repeat'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'wookiehangover/jshint.vim'
-"Plugin 'vim-scripts/cscope.vim'
 Plugin 'Valloric/YouCompleteMe'
-
+Plugin 'maksimr/vim-jsbeautify'
+Plugin 'marijnh/tern_for_vim'
 
 " markdown
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-
-Plugin 'maksimr/vim-jsbeautify'
 
 call vundle#end()
 filetype plugin indent on

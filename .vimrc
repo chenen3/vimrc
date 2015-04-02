@@ -1,4 +1,4 @@
-"source ~/.vimrc.basic
-source ~/.vimrc.awesome
-source ~/.vimrc.vundle
-source ~/.vimrc.plugin_conf
+"source ~/vimrc/.vimrc.basic
+source ~/vimrc/.vimrc.awesome
+source ~/vimrc/.vimrc.vundle
+source ~/vimrc/.vimrc.plugin_conf
