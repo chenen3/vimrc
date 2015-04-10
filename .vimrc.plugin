@@ -49,21 +49,18 @@ let g:ctrlp_working_path_mode = 'ra'
 map <leader>go :CtrlP ~/ktsg_portal/trunk/<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" color theme
+"colorscheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax enable
-set background=dark
-colorscheme solarized
+try
+    colorscheme solarized
+    let g:solarized_termcolors=256
+    let g:solarized_termtrans=1
+    let g:solarized_contrast="high"
+    let g:solarized_visibility="high"
+catch /^Vim\%((\a\+)\)\=:E185/
+    colorscheme desert
+endtry
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" del trailing whitespace
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-func! DeleteTrailingWhiteSpace()
-    exe "normal mz"
-    %s/\s\+$//ge
-    exe "normal `z"
-endfunc
-noremap <leader>w :call DeleteTrailingWhiteSpace()<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " indentline
