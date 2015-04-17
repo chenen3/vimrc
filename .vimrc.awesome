@@ -39,7 +39,7 @@ set wildignore=*.o,*~,*.pyc
 set ruler
 
 " Height of the command bar
-set cmdheight=2
+"set cmdheight=2
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -189,7 +189,7 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
-  set stal=2
+  "set stal=2
 catch
 endtry
 
@@ -219,6 +219,7 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 map 0 ^
 map :W :w
 nnoremap ; :
+xnoremap p pgvy
 inoremap <C-e> <ESC>A
 inoremap <C-a> <ESC>I
 inoremap <C-d> <ESC>lxi
