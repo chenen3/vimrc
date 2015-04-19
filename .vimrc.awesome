@@ -248,6 +248,7 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
+map <leader>t :call DeleteTrailingWS()<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
