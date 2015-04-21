@@ -10,9 +10,7 @@ Plugin 'elzr/vim-json'
 Plugin 'lepture/vim-javascript'
 Plugin 'Shougo/vimproc'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/vim-powerline'
 Plugin 'kien/ctrlp.vim'
-"Plugin 'klen/python-mode'
 Plugin 'scrooloose/nerdtree'
 "Plugin 'scrooloose/syntastic'
 Plugin 'Raimondi/delimitMate'
@@ -24,14 +22,15 @@ Plugin 'tpope/vim-surround'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-repeat'
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'wookiehangover/jshint.vim'
+"Plugin 'wookiehangover/jshint.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'marijnh/tern_for_vim'
+Plugin 'bling/vim-airline'
 
-" markdown
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+"" markdown
+"Plugin 'godlygeek/tabular'
+"Plugin 'plasticboy/vim-markdown'
 
 call vundle#end()
 filetype plugin indent on
@@ -41,7 +40,7 @@ filetype plugin indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules|bower_components|vender)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
@@ -52,11 +51,11 @@ map <leader>go :CtrlP ~/ktsg_portal/trunk/<CR>
 "colorscheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
-    colorscheme solarized
-    let g:solarized_termcolors=256
-    let g:solarized_termtrans=1
-    let g:solarized_contrast="high"
-    let g:solarized_visibility="high"
+    colorscheme monokai
+    "let g:solarized_termcolors=256
+    "let g:solarized_termtrans=1
+    "let g:solarized_contrast="high"
+    "let g:solarized_visibility="high"
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert
 endtry
@@ -66,17 +65,6 @@ endtry
 " indentline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:indentLine_color_term = 239
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" powerline
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set laststatus=2 " Always display the statusline in all windows
-set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline))"
-
-set encoding=utf-8
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-set t_Co=256
-let g:Powerline_symbols = 'fancy'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree config
@@ -114,12 +102,22 @@ let g:ycm_filetype_blacklist = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " syntastic
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:sybtastic_ignore_files=[".*\.py$"]
+"let g:syntastic_always_populate_loc_list = 0
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
+"let g:sybtastic_ignore_files=[".*\.py$"]
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" airline
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:airline#extensions#tabline#enabled = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" minibufexpl
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:miniBufExplMapCTabSwitchBufs = 1
