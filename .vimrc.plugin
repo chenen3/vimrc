@@ -10,24 +10,23 @@ Plugin 'elzr/vim-json'
 Plugin 'lepture/vim-javascript'
 Plugin 'Shougo/vimproc'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/vim-powerline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 Plugin 'Raimondi/delimitMate'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'sickill/vim-monokai'
+"Plugin 'sickill/vim-monokai'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-surround'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-repeat'
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'wookiehangover/jshint.vim'
+"Plugin 'wookiehangover/jshint.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'marijnh/tern_for_vim'
-"Plugin 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 
 " markdown
 Plugin 'godlygeek/tabular'
@@ -52,11 +51,11 @@ map <leader>go :CtrlP ~/ktsg_portal/trunk/<CR>
 "colorscheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
-    colorscheme monokai
-    "let g:solarized_termcolors=256
-    "let g:solarized_termtrans=1
-    "let g:solarized_contrast="high"
-    "let g:solarized_visibility="high"
+    colorscheme solarized
+    let g:solarized_termcolors=256
+    let g:solarized_termtrans=1
+    let g:solarized_contrast="high"
+    let g:solarized_visibility="high"
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert
 endtry
@@ -66,17 +65,6 @@ endtry
 " indentline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:indentLine_color_term = 239
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" powerline
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set laststatus=2 " Always display the statusline in all windows
-set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline))"
-
-set encoding=utf-8
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-set t_Co=256
-"let g:Powerline_symbols = 'fancy'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree config
@@ -127,9 +115,20 @@ let g:ycm_filetype_blacklist = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " airline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:airline#extensions#tabline#enabled = 1
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" minibufexpl
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:miniBufExplMapCTabSwitchBufs = 1
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
