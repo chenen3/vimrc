@@ -165,7 +165,6 @@ map <C-l> <C-W>l
 
 " Set split position
 set splitright
-set splitbelow
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
