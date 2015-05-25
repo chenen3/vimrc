@@ -1,2 +1,2 @@
-source ~/vimrc/.vimrc.awesome
-source ~/vimrc/.vimrc.plugin
+source ~/vimrc/awesome.vim
+source ~/vimrc/plugin.vim
