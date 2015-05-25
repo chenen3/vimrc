@@ -25,7 +25,8 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'marijnh/tern_for_vim'
-Plugin 'bling/vim-airline'
+"Plugin 'bling/vim-airline'
+Plugin 'Lokaltog/vim-powerline'
 Plugin 'godlygeek/csapprox'
 Plugin 'hynek/vim-python-pep8-indent'
 
@@ -61,7 +62,6 @@ try
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert
 endtry
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " indentline
@@ -136,6 +136,14 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" powerline
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set encoding=utf-8
+set laststatus=2
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+let g:Powerline_symbols = 'fancy'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CSApprox
