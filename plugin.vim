@@ -1,7 +1,5 @@
 set nocompatible
-
 filetype off
-
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -29,10 +27,9 @@ Plugin 'marijnh/tern_for_vim'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'godlygeek/csapprox'
 Plugin 'hynek/vim-python-pep8-indent'
-
-" markdown
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'Lokaltog/vim-easymotion'
 
 call vundle#end()
 filetype plugin indent on
@@ -154,3 +151,9 @@ let g:Powerline_symbols = 'fancy'
 set t_Co=256
 "set t_Co=88
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" easymotion
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
