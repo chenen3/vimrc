@@ -1,7 +1,9 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+set rtp+=~/vimfiles/bundle/Vundle.vim/
+let path='~/vimfiles/bundle'
+let vundle#bundle_dir = expand('$HOME/vimfiles/bundle', 1)
+call vundle#begin(path)
 
 Plugin 'gmarik/vundle'
 Plugin 'elzr/vim-json'
@@ -20,11 +22,11 @@ Plugin 'tpope/vim-surround'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-repeat'
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'marijnh/tern_for_vim'
-"Plugin 'bling/vim-airline'
-Plugin 'Lokaltog/vim-powerline'
+Plugin 'bling/vim-airline'
+"Plugin 'Lokaltog/vim-powerline'
 Plugin 'godlygeek/csapprox'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'godlygeek/tabular'
@@ -50,12 +52,12 @@ map <leader>go :CtrlP ~/ktsg_portal/trunk/<CR>
 "colorscheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
-    colorscheme monokai
-    "colorscheme solarized
-    "let g:solarized_termcolors=256
-    "let g:solarized_termtrans=1
-    "let g:solarized_contrast="high"
-    "let g:solarized_visibility="high"
+    "colorscheme monokai
+    colorscheme solarized
+    let g:solarized_termcolors=256
+    let g:solarized_termtrans=1
+    let g:solarized_contrast="high"
+    let g:solarized_visibility="high"
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert
 endtry
@@ -119,28 +121,30 @@ let g:syntastic_check_on_wq = 0
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
+let g:airline_powerline_fonts = 1
 
 " unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_left_sep = '>'
+let g:airline_left_sep = '>'
+let g:airline_right_sep = '>'
+let g:airline_right_sep = '>'
+let g:airline_symbols.linenr = '>'
+let g:airline_symbols.linenr = '>'
+let g:airline_symbols.linenr = '>'
+let g:airline_symbols.branch = '>'
+let g:airline_symbols.paste = '>'
+let g:airline_symbols.paste = '>'
+let g:airline_symbols.paste = '>'
+let g:airline_symbols.whitespace = '>'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " powerline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set encoding=utf-8
 set laststatus=2
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+"set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 let g:Powerline_symbols = 'fancy'
+set guifont=Sauce\ Code\ Powerline:h10
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CSApprox
