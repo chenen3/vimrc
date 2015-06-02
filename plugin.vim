@@ -41,12 +41,12 @@ filetype plugin indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)|node_modules$|bower_components|vender',
+  \ 'dir':  '\v[\/]\.(git|hg|svn)|node_modules$|bower_components|vender|tags',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
 let g:ctrlp_working_path_mode = 'ra'
-map <leader>go :CtrlP ~/ktsg_portal/trunk/<CR>
+map <leader>go :CtrlP ~/new_portal_git/trunk/<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "colorscheme
@@ -122,7 +122,6 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 let g:airline_powerline_fonts = 1
-
 " unicode symbols
 let g:airline_left_sep = '>'
 let g:airline_left_sep = '>'
@@ -142,7 +141,7 @@ let g:airline_symbols.whitespace = '>'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set encoding=utf-8
 set laststatus=2
-"set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 let g:Powerline_symbols = 'fancy'
 set guifont=Sauce\ Code\ Powerline:h10
 

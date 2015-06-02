@@ -91,7 +91,11 @@ set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
+    set guioptions-=m
     set guioptions-=T
+    set guioptions-=L
+    set guioptions-=r
+    set guioptions-=b
     set guioptions+=e
     set t_Co=256
     set guitablabel=%M\ %t
