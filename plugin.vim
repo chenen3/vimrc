@@ -1,9 +1,9 @@
 set nocompatible
+
 filetype off
-set rtp+=~/vimfiles/bundle/Vundle.vim/
-let path='~/vimfiles/bundle'
-let vundle#bundle_dir = expand('$HOME/vimfiles/bundle', 1)
-call vundle#begin(path)
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 Plugin 'gmarik/vundle'
 Plugin 'elzr/vim-json'
@@ -22,13 +22,15 @@ Plugin 'tpope/vim-surround'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-repeat'
 Plugin 'kien/rainbow_parentheses.vim'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'marijnh/tern_for_vim'
-Plugin 'bling/vim-airline'
-"Plugin 'Lokaltog/vim-powerline'
+"Plugin 'bling/vim-airline'
+Plugin 'Lokaltog/vim-powerline'
 Plugin 'godlygeek/csapprox'
 Plugin 'hynek/vim-python-pep8-indent'
+
+" markdown
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Lokaltog/vim-easymotion'
@@ -41,12 +43,12 @@ filetype plugin indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)|node_modules$|bower_components|vender|tags',
+  \ 'dir':  '\v[\/]\.(git|hg|svn)|node_modules$|bower_components|vender',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
 let g:ctrlp_working_path_mode = 'ra'
-map <leader>go :CtrlP ~/new_portal_git/trunk/<CR>
+map <leader>go :CtrlP ~/ktsg_portal/trunk/<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "colorscheme
@@ -125,20 +127,20 @@ let g:syntastic_check_on_wq = 0
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let g:airline_powerline_fonts = 1
+
 " unicode symbols
-let g:airline_left_sep = '>'
-let g:airline_left_sep = '>'
-let g:airline_right_sep = '>'
-let g:airline_right_sep = '>'
-let g:airline_symbols.linenr = '>'
-let g:airline_symbols.linenr = '>'
-let g:airline_symbols.linenr = '>'
-let g:airline_symbols.branch = '>'
-let g:airline_symbols.paste = '>'
-let g:airline_symbols.paste = '>'
-let g:airline_symbols.paste = '>'
-let g:airline_symbols.whitespace = '>'
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " powerline
@@ -147,7 +149,6 @@ set encoding=utf-8
 set laststatus=2
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 let g:Powerline_symbols = 'fancy'
-set guifont=Sauce\ Code\ Powerline:h10
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CSApprox
