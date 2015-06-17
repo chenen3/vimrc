@@ -78,12 +78,12 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&  b:NERDTre
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " jsbeautify
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType javascript noremap <buffer> <leader>js :call JsBeautify()<cr>
-autocmd FileType javascript vnoremap <buffer> <leader>js :call RangeJsBeautify()<cr>
-autocmd FileType html noremap <buffer> <leader>js :call HtmlBeautify()<cr>
-autocmd FileType html vnoremap <buffer> <leader>js :call RangeHtmlBeautify()<cr>
-autocmd FileType css noremap <buffer> <leader>js :call CSSBeautify()<cr>
-autocmd FileType css vnoremap <buffer> <leader>js :call RangeCSSBeautify()<cr>
+autocmd FileType javascript noremap <buffer> <C-f> :call JsBeautify()<cr>
+autocmd FileType javascript vnoremap <buffer> <C-f> :call RangeJsBeautify()<cr>
+autocmd FileType html noremap <buffer> <C-f> :call HtmlBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <C-f> :call RangeHtmlBeautify()<cr>
+autocmd FileType css noremap <buffer> <C-f> :call CSSBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <C-f> :call RangeCSSBeautify()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " youcompleteme
