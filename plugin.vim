@@ -24,16 +24,11 @@ Plugin 'tpope/vim-repeat'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'maksimr/vim-jsbeautify'
-Plugin 'marijnh/tern_for_vim'
-"Plugin 'bling/vim-airline'
-Plugin 'Lokaltog/vim-powerline'
-Plugin 'godlygeek/csapprox'
+"Plugin 'marijnh/tern_for_vim'
+Plugin 'bling/vim-airline'
 Plugin 'hynek/vim-python-pep8-indent'
-
-" markdown
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'Shutnik/jshint2.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -111,13 +106,13 @@ let g:ycm_filetype_blacklist = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " language checkers:
 "    python => pylint
-"    javascript => jslint
+"    javascript => jshint
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 

@@ -317,7 +317,7 @@ map <leader>pp :setlocal paste!<cr>
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set full screen
-au GUIEnter * simalt ~x
+"au GUIEnter * simalt ~x
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
