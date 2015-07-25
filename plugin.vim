@@ -29,6 +29,7 @@ Plugin 'bling/vim-airline'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Shutnik/jshint2.vim'
+Plugin 'christoomey/vim-tmux-navigator'
 
 call vundle#end()
 filetype plugin indent on
@@ -43,7 +44,6 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 let g:ctrlp_working_path_mode = 'ra'
-map <leader>go :CtrlP ~/ktsg_portal/trunk/<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "colorscheme
@@ -112,7 +112,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
