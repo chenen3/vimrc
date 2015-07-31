@@ -378,3 +378,9 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
+
+" Complete options (disable preview scratch window, longest removed to aways show menu)
+set completeopt-=preview
+
+" Limit popup menu height
+set pumheight=10
