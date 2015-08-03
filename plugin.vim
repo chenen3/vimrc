@@ -87,6 +87,7 @@ nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>jf :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>jg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
+let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
 let g:ycm_collect_identifiers_from_tag_files = 1
