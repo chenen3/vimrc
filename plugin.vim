@@ -23,13 +23,17 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-repeat'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'marijnh/tern_for_vim'
 Plugin 'maksimr/vim-jsbeautify'
-"Plugin 'marijnh/tern_for_vim'
+Plugin 'einars/js-beautify'
 Plugin 'bling/vim-airline'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'Shutnik/jshint2.vim'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'walm/jshint.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'derekwyatt/vim-scala'
 
 call vundle#end()
 filetype plugin indent on
@@ -49,12 +53,7 @@ let g:ctrlp_working_path_mode = 'ra'
 "colorscheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
-    "colorscheme monokai
-    colorscheme solarized
-    let g:solarized_termcolors=256
-    let g:solarized_termtrans=1
-    let g:solarized_contrast="high"
-    let g:solarized_visibility="high"
+    colorscheme solarized "candidate: monokai,solarized
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert
 endtry
@@ -161,3 +160,9 @@ let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" markdown
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vim_markdown_folding_disabled=1
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
