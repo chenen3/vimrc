@@ -16,7 +16,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'Raimondi/delimitMate'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'sickill/vim-monokai'
+Plugin 'crusoexia/vim-monokai'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-surround'
 Plugin 'Yggdroot/indentLine'
@@ -34,6 +34,10 @@ Plugin 'walm/jshint.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'klen/python-mode'
+Plugin 'mhinz/vim-startify'
+Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -62,6 +66,8 @@ endtry
 " indentline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:indentLine_color_term = 239
+" To be compatible with vim-json
+let g:indentLine_noConcealCursor=""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree config
@@ -72,12 +78,12 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&  b:NERDTre
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " jsbeautify
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType javascript noremap <buffer> <C-f> :call JsBeautify()<cr>
-autocmd FileType javascript vnoremap <buffer> <C-f> :call RangeJsBeautify()<cr>
-autocmd FileType html noremap <buffer> <C-f> :call HtmlBeautify()<cr>
-autocmd FileType html vnoremap <buffer> <C-f> :call RangeHtmlBeautify()<cr>
-autocmd FileType css noremap <buffer> <C-f> :call CSSBeautify()<cr>
-autocmd FileType css vnoremap <buffer> <C-f> :call RangeCSSBeautify()<cr>
+autocmd FileType javascript noremap <buffer> <leader>f :call JsBeautify()<cr>
+autocmd FileType javascript vnoremap <buffer> <leader>f :call RangeJsBeautify()<cr>
+autocmd FileType html noremap <buffer> <leader>f :call HtmlBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <leader>f :call RangeHtmlBeautify()<cr>
+autocmd FileType css noremap <buffer> <leader>f :call CSSBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <leader>f :call RangeCSSBeautify()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " youcompleteme
@@ -104,16 +110,11 @@ let g:ycm_filetype_blacklist = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " syntastic
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" language checkers:
-"    python => pylint
-"    javascript => jshint
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -166,3 +167,28 @@ omap / <Plug>(easymotion-tn)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vim_markdown_folding_disabled=1
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" tern
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>d :TernDef<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" monokai
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:monokai_italic = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" python-mode
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:pymode_folding = 0
+let g:pymode_lint_cwindow = 0
+let g:pymode_lint_ignore = "E501,E265,W"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" source code search tools: ag, ack
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ag_highlight=1
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif

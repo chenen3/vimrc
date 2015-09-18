@@ -80,7 +80,7 @@ set tm=500
 set number
 set relativenumber
 
-" hlight current line
+" Highlight current line
 set cursorline
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -384,3 +384,6 @@ set completeopt-=preview
 
 " Limit popup menu height
 set pumheight=10
+
+" diable ex mode
+nnoremap Q <nop>
