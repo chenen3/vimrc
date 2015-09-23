@@ -385,5 +385,8 @@ set completeopt-=preview
 " Limit popup menu height
 set pumheight=10
 
-" diable ex mode
+" diable shortcut for ex mode
 nnoremap Q <nop>
+
+" make Y consistent with C and D
+nnoremap Y y$
