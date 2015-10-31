@@ -398,6 +398,6 @@ vnoremap <tab> %
 " sudo write
 cmap W! w !sudo tee % >/dev/null
 
-" move to the previous/follow blank line
+" move to the previous/next blank line
 nnoremap [ {
 nnoremap ] }
