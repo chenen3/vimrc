@@ -390,3 +390,14 @@ nnoremap Q <nop>
 
 " make Y consistent with C and D
 nnoremap Y y$
+
+" tab for brackets
+nnoremap <tab> %
+vnoremap <tab> %
+
+" sudo write
+cmap W! w !sudo tee % >/dev/null
+
+" move to the previous/follow blank line
+nnoremap [ {
+nnoremap ] }
