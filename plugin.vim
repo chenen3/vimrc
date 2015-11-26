@@ -62,6 +62,11 @@ catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert
 endtry
 
+if has("gui_running")
+    try
+        set guifont=Ubuntu\ Mono\ derivative\ Powerline:h14
+    endtry
+endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " indentline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
