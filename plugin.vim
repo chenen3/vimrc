@@ -31,12 +31,9 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'walm/jshint.vim'
-Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'derekwyatt/vim-scala'
-Plugin 'klen/python-mode'
 Plugin 'mhinz/vim-startify'
-Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
 
 call vundle#end()
@@ -120,7 +117,8 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
+let g:syntastic_python_checkers=['pylint', 'flake', 'python']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " airline
@@ -191,7 +189,7 @@ let g:pymode_lint_cwindow = 0
 let g:pymode_lint_ignore = "E501,E265,W"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" source code search tools: ag, ack
+" source code search tools: ag
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ag_highlight=1
 if executable('ag')

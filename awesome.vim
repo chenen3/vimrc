@@ -251,8 +251,6 @@ func! DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
 map <leader>t :call DeleteTrailingWS()<CR>
 
 
@@ -398,6 +396,8 @@ vnoremap <tab> %
 " sudo write
 cmap W! w !sudo tee % >/dev/null
 
-" move to the previous/next blank line
-nnoremap [ {
-nnoremap ] }
+nnoremap <leader>q :q<CR>
+nnoremap <leader>a :Ag 
+
+autocmd FileType python let &colorcolumn="80"
+autocmd FileType python nnoremap <c-e> :w !python %<CR>
