@@ -394,13 +394,10 @@ nnoremap <tab> %
 vnoremap <tab> %
 
 " sudo write
-cmap W! w !sudo tee % >/dev/null
+cmap W! :w !sudo tee % >/dev/null
 
 nnoremap <leader>q :q<CR>
 nnoremap <leader>a :Ag 
-
-autocmd FileType python let &colorcolumn="80"
-autocmd FileType python nnoremap <leader>e :w !python %<CR>
 
 " move the current line above or below
 nnoremap [e  :<c-u>execute 'move -1-'. v:count1<cr>
@@ -409,3 +406,10 @@ nnoremap ]e  :<c-u>execute 'move +'. v:count1<cr>
 " add empty line
 nnoremap [<space>  :put! =''<cr>
 nnoremap ]<space>  :put =''<cr>]
+
+" python
+autocmd FileType python let &colorcolumn="80"
+autocmd FileType python nnoremap <leader>r :w !python %<CR>
+
+" golang
+autocmd FileType go nnoremap <leader>r :w !go run %<cr>
