@@ -225,12 +225,15 @@ map 0 ^
 map :W :w
 nnoremap ; :
 xnoremap p pgvy
+
+" behave like Emacs movement :)
 inoremap <C-e> <ESC>A
 inoremap <C-a> <ESC>I
 inoremap <C-d> <ESC>lxi
 inoremap <C-f> <ESC>lli
 inoremap <C-b> <ESC>i
 inoremap <C-w> <ESC>bcw
+inoremap <C-k> <ESC>lC
 
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
@@ -305,9 +308,6 @@ map <leader>s? z=
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
-" Quickly open a buffer for scripbble
-map <leader>q :e ~/buffer<cr>
-
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
@@ -378,7 +378,7 @@ function! <SID>BufcloseCloseIt()
 endfunction
 
 " Complete options (disable preview scratch window, longest removed to aways show menu)
-set completeopt-=preview
+"set completeopt-=preview
 
 " Limit popup menu height
 set pumheight=10
@@ -400,4 +400,12 @@ nnoremap <leader>q :q<CR>
 nnoremap <leader>a :Ag 
 
 autocmd FileType python let &colorcolumn="80"
-autocmd FileType python nnoremap <c-e> :w !python %<CR>
+autocmd FileType python nnoremap <leader>e :w !python %<CR>
+
+" move the current line above or below
+nnoremap [e  :<c-u>execute 'move -1-'. v:count1<cr>
+nnoremap ]e  :<c-u>execute 'move +'. v:count1<cr>
+
+" add empty line
+nnoremap [<space>  :put! =''<cr>
+nnoremap ]<space>  :put =''<cr>]

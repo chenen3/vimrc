@@ -54,7 +54,7 @@ let g:ctrlp_working_path_mode = 'ra'
 "colorscheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
-    colorscheme solarized "candidate: monokai,solarized
+    colorscheme monokai "candidate: monokai,solarized
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert
 endtry
@@ -170,6 +170,7 @@ omap / <Plug>(easymotion-tn)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vim_markdown_folding_disabled=1
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " tern
