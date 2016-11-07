@@ -412,4 +412,5 @@ autocmd FileType python let &colorcolumn="80"
 autocmd FileType python nnoremap <leader>r :w !python %<CR>
 
 " golang
-autocmd FileType go nnoremap <leader>r :w !go run %<cr>
+autocmd FileType go nnoremap <leader>r :!go run %<cr>
+autocmd FileType go inoremap ' ""<ESC>i
