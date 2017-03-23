@@ -78,18 +78,19 @@ set t_vb=
 set tm=500
 
 set number
-set relativenumber
-
-" Highlight current line
-set cursorline
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable
-
 set background=dark
+
+if has("gui_running")
+    try
+        set guifont=Monaco:h12
+    endtry
+endif
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -413,4 +414,3 @@ autocmd FileType python nnoremap <leader>r :w !python %<CR>
 
 " golang
 autocmd FileType go nnoremap <leader>r :!go run %<cr>
-autocmd FileType go inoremap ' ""<ESC>i
