@@ -19,9 +19,6 @@ let g:mapleader = ","
 " Set to auto change current directory
 set autochdir
 
-" enable mouse
-set mouse=a
-
 " 行高亮
 set cursorline
 
