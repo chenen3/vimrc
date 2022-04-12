@@ -209,7 +209,7 @@ filetype off
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => plugin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" plugin manager from https://github.com/junegunn/vim-plug
+" required plugin manager, see https://github.com/junegunn/vim-plug
 call plug#begin('~/.config/nvim/plugged')
 Plug 'neovim/nvim-lspconfig'
 Plug 'arzg/vim-colors-xcode'
@@ -272,7 +272,7 @@ EOF
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
-" required ripgrep for live grep, check out https://github.com/BurntSushi/ripgrep
+" required ripgrep for live grep, see https://github.com/BurntSushi/ripgrep
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
