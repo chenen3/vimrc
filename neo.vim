@@ -129,8 +129,8 @@ set viminfo^=%
 " with the default number being 1, here change it to 5
 " increase height: ctrl w + 
 " decrease height: ctrl w -
-" increase wide: ctrl w >
-" decrease wide: ctrl w <
+" increase width: ctrl w >
+" decrease width: ctrl w <
 nnoremap <C-W>> :vertical resize +5 <cr>
 nnoremap <C-W>< :vertical resize -5 <cr>
 
