@@ -17,10 +17,7 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Set to auto change current directory
-set autochdir
-
-" 行高亮
-set cursorline
+"set autochdir
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -75,6 +72,9 @@ set tm=500
 
 set number
 
+" 行高亮
+set cursorline
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -83,7 +83,9 @@ set nobackup
 set nowb
 set noswapfile
 
-
+" search down into subfolders
+" provides tab-completion for all file-relate tasks
+set path+=**
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -105,7 +107,6 @@ set ai "Auto indent
 set si "Smart indent
 set nowrap "No wrap lines
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -124,6 +125,14 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
+" there are built-in hotkeys in Vim to increase and decrease the window height and width,
+" with the default number being 1, here change it to 5
+" increase height: ctrl w + 
+" decrease height: ctrl w -
+" increase wide: ctrl w >
+" decrease wide: ctrl w <
+nnoremap <C-W>> :vertical resize +5 <cr>
+nnoremap <C-W>< :vertical resize -5 <cr>
 
 """"""""""""""""""""""""""""""
 " => Status line
@@ -131,23 +140,12 @@ set viminfo^=%
 " Always show the status line
 set laststatus=2
 
-" Format the status line
-" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ Line:\ %l
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remap VIM 0 to first non-blank character
 map 0 ^
 xnoremap p pgvy
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vimgrep searching and cope displaying
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" When you press gv you vimgrep after the selected text
-vnoremap <silent> gv :call VisualSelection('gv')<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -163,28 +161,6 @@ function! CmdLine(str)
     emenu Foo.Bar
     unmenu Foo
 endfunction
-
-function! VisualSelection(direction) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
-        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction
-
 
 " Returns true if paste mode is enabled
 function! HasPaste()
@@ -218,7 +194,7 @@ endfunction
 " Limit popup menu height
 set pumheight=10
 
-" diable shortcut for ex mode
+" disable shortcut for ex mode
 nnoremap Q <nop>
 
 " sudo write
@@ -234,64 +210,69 @@ filetype off
 " => plugin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " plugin manager from https://github.com/junegunn/vim-plug
-call plug#begin('~/.vim/plugged')
-Plug 'https://github.com/ctrlpvim/ctrlp.vim'
-Plug 'https://github.com/neovim/nvim-lspconfig'
-Plug 'https://github.com/endel/vim-github-colorscheme'
-Plug 'dracula/vim', { 'as': 'dracula' }
+call plug#begin('~/.config/nvim/plugged')
+Plug 'neovim/nvim-lspconfig'
+Plug 'arzg/vim-colors-xcode'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 call plug#end()
 
-colorscheme github
-
-" 行高亮会有下划线，调整颜色使其隐藏。注意在颜色主题后面设置
-highlight CursorLine cterm=None ctermbg=white ctermfg=None guibg=None guifg=None
+" optional: xcodelight, xcodedark
+colorscheme xcodelight
 
 lua << EOF
-local nvim_lsp = require('lspconfig')
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  -- Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
   -- Mappings.
+  -- See `:help vim.diagnostic.*` for documentation on any of the below functions
   local opts = { noremap=true, silent=true }
-
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-
-end
-
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers = {'gopls'}
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-	on_attach = on_attach,
-	flags = {
-	  debounce_text_changes = 150,
-	}
+  vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+  vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+  
+  -- Use an on_attach function to only map the following keys
+  -- after the language server attaches to the current buffer
+  local on_attach = function(client, bufnr)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  
+    -- Mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  end
+  
+  require("lspconfig").gopls.setup {
+    on_attach = on_attach,
+    cmd = {"gopls", "serve"},
+    settings = {
+      gopls = {
+        analyses = {
+          -- unusedparams = true,
+  		  shadow = true,
+        },
+        staticcheck = true,
+      },
+    },
   }
-end
+
+  require('telescope').load_extension('fzf')
 EOF
 
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+" required ripgrep for live grep, check out https://github.com/BurntSushi/ripgrep
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
