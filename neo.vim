@@ -1,121 +1,51 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sets how many lines of history VIM has to remember
-set history=700
-
-" Enable filetype plugins
-" filetype plugin on
-" filetype indent on
-
-" Set to auto read when a file is changed from the outside
-set autoread
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
+" General
+set history=700 " Sets how many lines of history VIM has to remember
+filetype plugin on " Enable filetype plugins
+filetype indent on
+set autoread " Set to auto read when a file is changed from the outside
 let mapleader = ","
 let g:mapleader = ","
-
-" Set to auto change current directory
-"set autochdir
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM user interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn on the WiLd menu
-set wildmenu
-
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-
-"Always show current position
-set ruler
-
-" Height of the command bar
-"set cmdheight=2
-
-" A buffer becomes hidden when it is abandoned
-set hid
-
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
-
-" Ignore case when searching
-set ignorecase
-
-" When searching try to be smart about cases
-set smartcase
-
-" Highlight search results
-set hlsearch
-
-" Makes search act like search in modern browsers
-set incsearch
-
-" Don't redraw while executing macros (good performance config)
-set lazyredraw
-
-" For regular expressions turn magic on
-set magic
-
-" Show matching brackets when text indicator is over them
-set showmatch
-" How many tenths of a second to blink when matching brackets
-set mat=2
-
-" No annoying sound on errors
-set noerrorbells
-set novisualbell
-set t_vb=
-set tm=500
-
-set number
-
-" 行高亮
-set cursorline
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set guifont=Menlo:h13
+command ConfigEdit edit ~/.config/nvim/init.vim
+command ConfigReload source ~/.config/nvim/init.vim
+set path+=** " search down into subfolders
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
 set nowb
 set noswapfile
+" disable shortcut for ex mode
+nnoremap Q <nop>
 
-" search down into subfolders
-" provides tab-completion for all file-relate tasks
-set path+=**
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use spaces instead of tabs
-" set expandtab
-
-" Be smart when using tabs ;)
-set smarttab
-
-" 1 tab == 4 spaces
-set shiftwidth=4
+" UI
+set wildignore=*.o,*~,*.pyc " Ignore compiled files
+set hidden
+set whichwrap+=<,>,h,l
+set ignorecase
+set smartcase
+set incsearch
+set lazyredraw " Don't redraw while executing macros (good performance config)
+set magic " For regular expressions turn magic on
+set showmatch " Show matching brackets when text indicator is over them
+set mat=2 " How many tenths of a second to blink when matching brackets
+set noerrorbells " No annoying sound on errors
+set novisualbell
+set t_vb=
+set tm=500
+set number
+set cursorline " 行高亮
+set shiftwidth=4 " 1 tab == 4 spaces
 set tabstop=4
-
-" Linebreak on 500 characters
-set lbr
+set linebreak " Linebreak on 500 characters
 set tw=500
+set smartindent
+set nowrap
+set laststatus=2 " Always show the status line
+set pumheight=10 " Limit popup menu height
 
-set ai "Auto indent
-set si "Smart indent
-set nowrap "No wrap lines
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
-
-" Set split position
-set splitright
+set splitright " Set split position
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -127,89 +57,24 @@ set viminfo^=%
 
 " there are built-in hotkeys in Vim to increase and decrease the window height and width,
 " with the default number being 1, here change it to 5
-" increase height: ctrl w + 
-" decrease height: ctrl w -
-" increase width: ctrl w >
-" decrease width: ctrl w <
 nnoremap <C-W>> :vertical resize +5 <cr>
 nnoremap <C-W>< :vertical resize -5 <cr>
 
-" Always show the status line
-set laststatus=2
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remap VIM 0 to first non-blank character
 map 0 ^
 xnoremap p pgvy
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
+" toggle spell checking
 map <leader>ss :setlocal spell!<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
-endfunction
-
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
-endfunction
-
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
-
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
-
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
-
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
-endfunction
-
-" Limit popup menu height
-set pumheight=10
-
-" disable shortcut for ex mode
-nnoremap Q <nop>
-
 " sudo write
 cmap W! :w !sudo tee % >/dev/null
-
-" python
 autocmd FileType python let &colorcolumn="80"
+autocmd FileType go let &colorcolumn="100"
 
-set nocompatible
-filetype off
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => plugin
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" required plugin manager, see https://github.com/junegunn/vim-plug
+" plugin manager: vim-plug
 call plug#begin('~/.config/nvim/plugged')
 Plug 'arzg/vim-colors-xcode'
-Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/plenary.nvim' " telescope dependency
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'neovim/nvim-lspconfig'
@@ -220,10 +85,18 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
 call plug#end()
 
 " optional: xcodelight, xcodedark
 colorscheme xcodelight
+
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+set completeopt=menu,menuone,noselect
 
 lua << EOF
   -- Mappings.
@@ -233,13 +106,13 @@ lua << EOF
   vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-  
+
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
   local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-  
+
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -317,6 +190,8 @@ lua << EOF
     capabilities = capabilities,
     on_attach = on_attach,
     cmd = {"gopls", "serve"},
+	filetypes = {"go", "gomod"},
+    root_dir = require("lspconfig/util").root_pattern("go.work", "go.mod", ".git"),
     settings = {
       gopls = {
         analyses = {
@@ -329,13 +204,29 @@ lua << EOF
   }
 
   require('telescope').load_extension('fzf')
+
+  require'nvim-treesitter.configs'.setup {
+    -- A list of parser names, or "all"
+    ensure_installed = {"go"},
+    -- Install parsers synchronously (only applied to `ensure_installed`)
+    sync_install = false,
+    -- List of parsers to ignore installing (for "all")
+    ignore_install = { "javascript" },
+    highlight = {
+      -- `false` will disable the whole extension
+      enable = true,
+      -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+      -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+      -- the name of the parser)
+      -- list of language that will be disabled
+      -- disable = { "c", "rust" },
+  
+      -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+      -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+      -- Using this option may slow down your editor, and you may see some duplicate highlights.
+      -- Instead of true it can also be a list of languages
+      additional_vim_regex_highlighting = false,
+    },
+  }
 EOF
 
-" Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-" required ripgrep for live grep, see https://github.com/BurntSushi/ripgrep
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-set completeopt=menu,menuone,noselect
