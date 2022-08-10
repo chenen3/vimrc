@@ -20,7 +20,7 @@ net.inet.tcp.recvbuf_auto=1
 net.inet.tcp.sendbuf_inc=16384 
 net.inet.tcp.recvbuf_inc=524288 
 # set this on test/measurement hosts
-net.inet.tcp.hostcache.expire=1
+# net.inet.tcp.hostcache.expire=1
 # Set congestion control algorithm to Cubic or HTCP
 # Make sure the module is loaded at boot time - check loader.conf
 # net.inet.tcp.cc.algorithm=cubic  
@@ -36,10 +36,7 @@ go install github.com/Jigsaw-Code/outline-ss-server@latest
 
 ss_port=9000
 ss_method=chacha20-ietf-poly1305
-base64_without_padding() {
-  openssl enc -base64 -A | tr -d '='
-}
-ss_secret=`head -c 16 /dev/urandom | base64_without_padding`
+ss_secret=`openssl rand -base64 12`
 cat >> /usr/local/etc/outline-ss-server.yml << EOF
 keys:
   - id: user-0
@@ -63,6 +60,9 @@ echo "----------------------------------------------------"
 echo "| Generate shadowsocks URL                         |"
 echo "----------------------------------------------------"
 ip=`fetch --quiet -o - https://checkip.amazonaws.com`
+base64_without_padding() {
+  openssl enc -base64 -A | tr -d '='
+}
 echo ss://`echo -n ${ss_method}:${ss_secret}@$ip:${ss_port} | base64_without_padding`
 
 echo "-----------------------------------------------------------"

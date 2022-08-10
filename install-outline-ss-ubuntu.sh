@@ -16,10 +16,7 @@ echo "| install outline-ss-server                        |"
 echo "----------------------------------------------------"
 ss_port=9000
 ss_method=chacha20-ietf-poly1305
-base64_without_padding() {
-  openssl enc -base64 -A | tr -d '='
-}
-ss_secret=$(head -c 16 /dev/urandom | base64_without_padding)
+ss_secret=$(openssl rand -base64 12)
 
 cd /tmp
 curl -sLO https://github.com/Jigsaw-Code/outline-ss-server/releases/download/v1.3.5/outline-ss-server_1.3.5_linux_x86_64.tar.gz
@@ -47,6 +44,9 @@ echo "----------------------------------------------------"
 echo "| Generate shadowsocks URL                         |"
 echo "----------------------------------------------------"
 ip=`curl --silent https://checkip.amazonaws.com`
+base64_without_padding() {
+  openssl enc -base64 -A | tr -d '='
+}
 echo ss://$(echo -n ${ss_method}:${ss_secret}@$ip:${ss_port} | base64_without_padding)
 
 echo "-----------------------------------------------------------"
