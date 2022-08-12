@@ -25,6 +25,8 @@ net.inet.tcp.recvbuf_inc=524288
 # Make sure the module is loaded at boot time - check loader.conf
 # net.inet.tcp.cc.algorithm=cubic  
 net.inet.tcp.cc.algorithm=htcp
+# increase UDP receive buffer size for quic-go
+kern.ipc.maxsockbuf=3014656
 EOF
 sysctl -f /etc/sysctl.conf
 

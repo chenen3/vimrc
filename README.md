@@ -1,12 +1,12 @@
 # vimrc
 
-## vim config
+## vim
 
 ```sh
 curl -fLo ~/.vimrc https://raw.githubusercontent.com/chenen3/vimrc/master/vimrc
 ```
 
-## neovim config
+## neovim
 
 ```sh
 curl -fLo ~/.config/nvim/init.vim --create-dirs \
@@ -16,7 +16,7 @@ curl -fLo ~/.config/nvim/init.vim --create-dirs \
 #     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-## fish config
+## fish shell
 ```sh
 curl -fLo ~/.config/fish/config.fish --create-dirs https://raw.githubusercontent.com/chenen3/vimrc/master/config.fish
 ```
