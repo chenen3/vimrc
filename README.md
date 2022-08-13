@@ -1,4 +1,4 @@
-# vimrc
+# Running Config
 
 ## vim
 
