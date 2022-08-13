@@ -1,11 +1,5 @@
 # Running Config
 
-## vim
-
-```sh
-curl -fLo ~/.vimrc https://raw.githubusercontent.com/chenen3/vimrc/master/vimrc
-```
-
 ## neovim
 
 ```sh
@@ -14,6 +8,12 @@ curl -fLo ~/.config/nvim/init.vim --create-dirs \
 # if plugin manager not installed:
 # curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 #     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+## vim
+
+```sh
+curl -fLo ~/.vimrc https://raw.githubusercontent.com/chenen3/vimrc/master/vimrc
 ```
 
 ## fish shell
