@@ -3,20 +3,19 @@
 ## neovim
 
 ```sh
-curl -fLo ~/.config/nvim/init.vim --create-dirs \
-    https://raw.githubusercontent.com/chenen3/vimrc/master/neo.vim
-# if plugin manager not installed:
-# curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
-#     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+mkdir -p ~/.config/nvim/lua
+curl -L https://raw.githubusercontent.com/chenen3/vimrc/master/init.lua -o ~/.config/nvim/init.lua
+curl -L https://raw.githubusercontent.com/chenen3/vimrc/master/plugin.lua -o ~/.config/nvim/lua/plugin.lua
 ```
 
 ## vim
 
 ```sh
-curl -fLo ~/.vimrc https://raw.githubusercontent.com/chenen3/vimrc/master/vimrc
+curl -L https://raw.githubusercontent.com/chenen3/vimrc/master/vimrc -o ~/.vimrc
 ```
 
 ## fish shell
 ```sh
-curl -fLo ~/.config/fish/config.fish --create-dirs https://raw.githubusercontent.com/chenen3/vimrc/master/config.fish
+mkdir -p ~/.config/fish
+curl -L https://raw.githubusercontent.com/chenen3/vimrc/master/config.fish -o ~/.config/fish/config.fish
 ```

@@ -33,7 +33,7 @@ sysctl -f /etc/sysctl.conf
 echo "----------------------------------------------------"
 echo "| install outline-ss-server                        |"
 echo "----------------------------------------------------"
-pkg install -y go py38-supervisor
+pkg install -y go py39-supervisor
 go install github.com/Jigsaw-Code/outline-ss-server@latest
 
 ss_port=9000
