@@ -1,4 +1,4 @@
-vim.cmd[[
+vim.cmd([[
 filetype plugin on
 filetype indent on
 autocmd FileType python let &colorcolumn="80"
@@ -18,11 +18,11 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 command! TrimWhitespace call TrimWhitespace()
-]]
+]])
 
-vim.bo.shiftwidth = 4
-vim.bo.tabstop= 4
-vim.bo.smartindent = true
+vim.o.shiftwidth = 4
+vim.o.tabstop= 4
+vim.o.smartindent = true
 vim.wo.number = true
 vim.wo.cursorline = true
 vim.bo.swapfile = false
@@ -40,18 +40,14 @@ vim.go.splitbelow = true
 vim.go.timeoutlen = 500
 vim.go.history = 700
 vim.go.wildignore = '*.o,*~,*.pyc'
+vim.go.laststatus = 3
+vim.go.winbar = '%f'
 
 vim.g.mapleader = ','
 vim.keymap.set('n', '<leader>ss', '<CMD>setlocal spell!<CR>') -- toggle spell checking
 vim.keymap.set('n', '<leader>q', '<CMD>q<CR>') -- exit buffer
 vim.keymap.set('n', '0', '^') -- move to first non-blank character
 vim.keymap.set('x', 'p', 'pgvy') -- prepare for the second pasting
-vim.keymap.set('i', "'", "''<ESC>i")
-vim.keymap.set('i', '"', '""<ESC>i')
-vim.keymap.set('i', '(', '()<ESC>i')
-vim.keymap.set('i', '(', '()<ESC>i')
-vim.keymap.set('i', '{', '{}<ESC>i')
-vim.keymap.set('i', '[', '[]<ESC>i')
 vim.keymap.set('n', 'j', 'gj') -- treat long lines as break lines (useful when moving around in them)
 vim.keymap.set('n', 'k', 'gk')
 vim.keymap.set('n', '<C-W>>', '<CMD>vertical resize +10<CR>')

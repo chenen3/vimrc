@@ -1,12 +1,12 @@
 require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
-	use 'arzg/vim-colors-xcode'
+	use 'projekt0n/github-nvim-theme'
 	use 'neovim/nvim-lspconfig'
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		-- Post-install/update hook
-		run = function() require('nvim-treesitter.install').update({ with_sync = true }) end
+		run = ':TSUpdate'
 	}
 	use {
 		'windwp/nvim-autopairs',
@@ -19,10 +19,16 @@ require('packer').startup(function(use)
 			{'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
 		}
 	}
+	use {
+		'ms-jpq/coq_nvim', branch = 'coq',
+		requires = {
+			{'ms-jpq/coq.artifacts', branch = 'artifacts'},
+			{'ms-jpq/coq.thirdparty', branch = '3p'}
+		}
+	}
 end)
 
--- xcodelight, xcodedark
-vim.cmd("colorscheme xcodelight")
+vim.cmd('colorscheme github_dark')
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -58,7 +64,11 @@ local on_attach = function(client, bufnr)
 end
 
 -- Setup lspconfig.
-require('lspconfig')['gopls'].setup {
+vim.cmd([[
+	let g:coq_settings = { 'auto_start': 'shut-up', 'display.icons.mode': 'none' }
+]])
+
+require('lspconfig')['gopls'].setup(require('coq').lsp_ensure_capabilities({
 	on_attach = on_attach,
 	cmd = {"gopls", "serve"},
 	filetypes = {"go", "gomod"},
@@ -72,7 +82,8 @@ require('lspconfig')['gopls'].setup {
 			staticcheck = true,
 		},
 	},
-}
+}))
+
 
 require'nvim-treesitter.configs'.setup {
 	-- A list of parser names, or "all"
@@ -80,7 +91,7 @@ require'nvim-treesitter.configs'.setup {
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
 	-- Automatically install missing parsers when entering buffer
-	auto_install = true,
+	auto_install = false,
 	-- List of parsers to ignore installing (for "all")
 	ignore_install = { "javascript" },
 	highlight = {
@@ -90,7 +101,7 @@ require'nvim-treesitter.configs'.setup {
 		-- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
 		-- the name of the parser)
 		-- list of language that will be disabled
-		disable = { "c", "rust" },
+		disable = { "c" },
 
 		-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
 		-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
@@ -100,9 +111,11 @@ require'nvim-treesitter.configs'.setup {
 	},
 }
 
-vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
-vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
-vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
-vim.keymap.set('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', 'ff', builtin.find_files, {})
+vim.keymap.set('n', 'fg', builtin.live_grep, {})
+vim.keymap.set('n', 'fb', builtin.buffers, {})
+vim.keymap.set('n', 'fh', builtin.help_tags, {})
+vim.keymap.set('n', 'fr', builtin.lsp_references, {})
+vim.keymap.set('n', 'fi', builtin.lsp_implementations, {})
 require('telescope').load_extension('fzf')
-

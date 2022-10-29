@@ -45,10 +45,8 @@ echo "----------------------------------------------------"
 echo "| Generate shadowsocks URL                         |"
 echo "----------------------------------------------------"
 ip=`curl --silent https://checkip.amazonaws.com`
-base64_without_padding() {
-  openssl enc -base64 -A | tr -d '='
-}
-echo ss://$(echo -n ${ss_method}:${ss_secret}@$ip:${ss_port} | base64_without_padding)
+userinfo=$(echo -n ${ss_method}:${ss_secret} |openssl enc -base64 -A | tr -d '=')
+echo ss://$userinfo@$ip:${ss_port}
 
 echo "-----------------------------------------------------------"
 echo "| Ensure that the firewall allows TCP/UDP port ${ss_port} |"
