@@ -1,4 +1,4 @@
-# !/bin/sh
+#!/bin/sh
 # tested on FreeBSD 12.3, root permission required
 
 echo "------------------------------------------------------------------"
