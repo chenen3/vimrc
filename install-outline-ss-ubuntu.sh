@@ -20,8 +20,8 @@ ss_method=chacha20-ietf-poly1305
 ss_secret=$(openssl rand -base64 12)
 
 cd /tmp
-curl -sLO https://github.com/Jigsaw-Code/outline-ss-server/releases/download/v1.3.5/outline-ss-server_1.3.5_linux_x86_64.tar.gz
-tar -xzvf outline-ss-server_1.3.5_linux_x86_64.tar.gz
+curl -sL https://github.com/Jigsaw-Code/outline-ss-server/releases/latest/download/outline-ss-server_1.4.0_linux_x86_64.tar.gz -o outline-ss-server.tar.gz
+tar -xzvf outline-ss-server.tar.gz
 cp outline-ss-server /usr/local/bin/outline-ss-server
 cat >> /usr/local/etc/outline-ss-server.yml << EOF
 keys:
