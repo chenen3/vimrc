@@ -2,7 +2,6 @@ vim.cmd([[
 filetype plugin on
 filetype indent on
 autocmd FileType python let &colorcolumn="80"
-autocmd FileType go let &colorcolumn="100"
 
 " Return to last edit position when opening files
 autocmd BufReadPost *
@@ -28,7 +27,6 @@ vim.wo.cursorline = true
 vim.bo.swapfile = false
 vim.go.backup = false
 vim.go.writebackup = false
-vim.go.guifont = 'Menlo:h14'
 vim.go.ignorecase = true
 vim.go.smartcase = true
 vim.go.incsearch = true
@@ -42,15 +40,13 @@ vim.go.history = 700
 vim.go.wildignore = '*.o,*~,*.pyc'
 vim.go.laststatus = 3
 vim.go.winbar = '%f'
+vim.go.mouse = '' -- disable mouse, poor support currently
 
 vim.g.mapleader = ','
 vim.keymap.set('n', '<leader>ss', '<CMD>setlocal spell!<CR>') -- toggle spell checking
-vim.keymap.set('n', '<leader>q', '<CMD>q<CR>') -- exit buffer
 vim.keymap.set('n', '0', '^') -- move to first non-blank character
 vim.keymap.set('x', 'p', 'pgvy') -- prepare for the second pasting
 vim.keymap.set('n', 'j', 'gj') -- treat long lines as break lines (useful when moving around in them)
 vim.keymap.set('n', 'k', 'gk')
-vim.keymap.set('n', '<C-W>>', '<CMD>vertical resize +10<CR>')
-vim.keymap.set('n', '<C-W><', '<CMD>vertical resize -10<CR>')
 
 require('plugin')

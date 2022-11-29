@@ -1,5 +1,6 @@
 #!/bin/sh
-# tested on Ubuntu 20.04 LTS, root permission required
+# This script hosted on Github https://raw.githubusercontent.com/chenen3/vimrc/master/install_outline_ss_ubuntu.sh
+# Tested on Ubuntu 20.04 LTS, root permission required.
 
 echo "----------------------------------------------------"
 echo "| Enable BBR congestion control                    |"
