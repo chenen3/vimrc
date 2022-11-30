@@ -86,7 +86,8 @@ EOF
 systemctl daemon-reload
 
 echo "The following steps are required:"
-echo "1. update the config: /etc/caddy/Caddyfile"
-echo "2. systemctl enable caddy && systemctl start caddy"
-echo "3. allows TCP port 443"
-echo "4. maybe enable the TCP congestion algorithm BBR"
+echo "1. Add an A-record to your domain name and point to this server"
+echo "2. allows TCP port 443"
+echo "3. update the config: /etc/caddy/Caddyfile"
+echo "4. systemctl enable caddy && systemctl start caddy"
+echo "5. maybe enable the TCP congestion algorithm BBR"
