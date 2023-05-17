@@ -1,7 +1,6 @@
 require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
-	use 'projekt0n/github-nvim-theme'
 	use 'neovim/nvim-lspconfig'
 	use {
 		'nvim-treesitter/nvim-treesitter',
@@ -19,16 +18,7 @@ require('packer').startup(function(use)
 			{'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
 		}
 	}
-	use {
-		'ms-jpq/coq_nvim', branch = 'coq',
-		requires = {
-			{'ms-jpq/coq.artifacts', branch = 'artifacts'},
-			{'ms-jpq/coq.thirdparty', branch = '3p'}
-		}
-	}
 end)
-
-vim.cmd('colorscheme github_dark')
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -50,7 +40,6 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
@@ -60,19 +49,13 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
 -- Setup lspconfig.
-vim.cmd([[
-	let g:coq_settings = { 'auto_start': 'shut-up', 'display.icons.mode': 'none' }
-]])
-
-require('lspconfig')['gopls'].setup(require('coq').lsp_ensure_capabilities({
+require('lspconfig')['gopls'].setup{
 	on_attach = on_attach,
-	cmd = {"gopls", "serve"},
-	filetypes = {"go", "gomod"},
-	root_dir = require("lspconfig/util").root_pattern("go.work", "go.mod", ".git"),
 	settings = {
 		gopls = {
 			analyses = {
@@ -82,7 +65,7 @@ require('lspconfig')['gopls'].setup(require('coq').lsp_ensure_capabilities({
 			staticcheck = true,
 		},
 	},
-}))
+}
 
 
 require'nvim-treesitter.configs'.setup {
@@ -118,4 +101,5 @@ vim.keymap.set('n', 'fb', builtin.buffers, {})
 vim.keymap.set('n', 'fh', builtin.help_tags, {})
 vim.keymap.set('n', 'fr', builtin.lsp_references, {})
 vim.keymap.set('n', 'fi', builtin.lsp_implementations, {})
+vim.keymap.set('n', 'fs', builtin.lsp_dynamic_workspace_symbols, {})
 require('telescope').load_extension('fzf')

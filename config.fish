@@ -3,7 +3,7 @@
 #end
 
 function fish_prompt -d "Write out the prompt"
-	set -g __fish_git_prompt_showdirtystate
+	set -g __fish_git_prompt_showdirtystate true
     printf '%s%s%s%s> ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (fish_git_prompt)
 end
 
@@ -20,7 +20,7 @@ function unproxy
 	set --erase no_proxy
 end
 
-function myIP
+function checkIP
 	curl -L https://checkip.amazonaws.com
 end
 
@@ -31,5 +31,7 @@ set --export PATH "$PATH:$GOPATH/bin"
 set --export GOPROXY "https://goproxy.cn,direct"
 set --export EDITOR "vim"
 set --export HOMEBREW_NO_AUTO_UPDATE 1
+# prefer the helping message in English
+# set --export LANG en_US.UTF-8
 
 alias vim="nvim"

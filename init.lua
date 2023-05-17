@@ -1,4 +1,6 @@
 vim.cmd([[
+colorscheme quiet
+
 filetype plugin on
 filetype indent on
 autocmd FileType python let &colorcolumn="80"
@@ -41,6 +43,7 @@ vim.go.wildignore = '*.o,*~,*.pyc'
 vim.go.laststatus = 3
 vim.go.winbar = '%f'
 vim.go.mouse = '' -- disable mouse, poor support currently
+vim.go.termguicolors = true -- 24bit true color
 
 vim.g.mapleader = ','
 vim.keymap.set('n', '<leader>ss', '<CMD>setlocal spell!<CR>') -- toggle spell checking

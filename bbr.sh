@@ -1,4 +1,5 @@
 #!/bin/bash
+# Hosted on Github https://raw.githubusercontent.com/chenen3/vimrc/master/bbr.sh
 # Tested on Ubuntu 20.04 LTS, root permission required.
 
 has_bbr=$(lsmod | grep bbr)
