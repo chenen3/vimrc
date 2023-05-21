@@ -1,7 +1,8 @@
 #!/bin/bash
 # This script hosted on Github https://raw.githubusercontent.com/chenen3/vimrc/master/install_naiveproxy.sh
-# Tested on Ubuntu 20.04 LTS, root permission required.
+# Tested on Ubuntu 22.04 LTS, root permission required.
 
+cd /tmp
 wget https://github.com/klzgrad/forwardproxy/releases/latest/download/caddy-forwardproxy-naive.tar.xz
 tar -xvf caddy-forwardproxy-naive.tar.xz
 mv caddy-forwardproxy-naive/caddy /usr/bin/caddy
