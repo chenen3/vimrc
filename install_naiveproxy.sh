@@ -1,7 +1,36 @@
 #!/bin/bash
 # This script hosted on Github https://raw.githubusercontent.com/chenen3/vimrc/master/install_naiveproxy.sh
-# Tested on Ubuntu 22.04 LTS, root permission required.
+# Tested on Ubuntu 22.04 LTS
 
+# check if the script is running as root
+if [ "$EUID" -ne 0 ]; then
+    echo "Please run this script as root!"
+    exit 1
+fi
+
+# prompt user to input domain name
+read -p "Please input your domain name: " domain
+if [ -z "$domain" ]; then
+    echo "Domain name cannot be empty!"
+    exit 1
+fi
+ip=$(curl -s https://ipinfo.io/ip)
+if ! host $domain | grep -q "$ip"; then
+    echo "Domain name is not point to this server!"
+    exit 1
+fi
+# promt user to ensure TCP port 443 is open
+read -p "Please ensure TCP port 443 is open, continue? [y/n] " confirm
+if [ "$confirm" != "y" ]; then
+    echo "Installation aborted!"
+    exit 1
+fi
+
+# generate random username and password
+user=$(openssl rand -hex 4)
+pass=$(openssl rand -hex 8)
+
+# install caddy-forwardproxy-naive
 cd /tmp
 wget https://github.com/klzgrad/forwardproxy/releases/latest/download/caddy-forwardproxy-naive.tar.xz
 tar -xvf caddy-forwardproxy-naive.tar.xz
@@ -11,10 +40,10 @@ cat >> /etc/caddy/Caddyfile << EOF
 {
   order forward_proxy before file_server
 }
-:443, example.com {
-  tls me@example.com
+:443, $domain {
+  tls me@$domain
   forward_proxy {
-    basic_auth user pass
+    basic_auth $user $pass
     hide_ip
     hide_via
     probe_resistance
@@ -85,10 +114,21 @@ WantedBy=multi-user.target
 EOF
 
 systemctl daemon-reload
+systemctl enable caddy
+systemctl start caddy
 
-echo "The following steps are required:"
-echo "1. Add an A-record to your domain name and point to this server"
-echo "2. allows TCP port 443"
-echo "3. update the config: /etc/caddy/Caddyfile"
-echo "4. systemctl enable caddy && systemctl start caddy"
-echo "5. maybe enable the TCP congestion algorithm BBR"
+# check if TCP congestion control is BBR algorithm, if not, enable it
+if ! lsmod | grep -q "bbr"; then
+    echo "TCP congestion control is not BBR algorithm, enable it now..."
+    echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
+    echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
+    sysctl -p
+fi
+
+echo ""
+echo "Installation completed, please use the following info to configure your client:"
+echo "  Username: $user"
+echo "  Password: $pass"
+echo "  Domain: $domain"
+echo "  Port: 443"
+echo "  Proxy URL: https://$user:$pass@$domain"

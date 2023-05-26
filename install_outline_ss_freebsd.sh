@@ -38,7 +38,7 @@ go install github.com/Jigsaw-Code/outline-ss-server@latest
 
 ss_port=9000
 ss_method=chacha20-ietf-poly1305
-ss_secret=`openssl rand -base64 12`
+ss_secret=`openssl rand -hex 8`
 cat >> /usr/local/etc/outline-ss-server.yml << EOF
 keys:
   - id: user-0

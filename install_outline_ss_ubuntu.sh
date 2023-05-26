@@ -18,7 +18,7 @@ echo "| install outline-ss-server                        |"
 echo "----------------------------------------------------"
 ss_port=9000
 ss_method=chacha20-ietf-poly1305
-ss_secret=$(openssl rand -base64 12)
+ss_secret=$(openssl rand -hex 8)
 
 cd /tmp
 curl -sL https://github.com/Jigsaw-Code/outline-ss-server/releases/latest/download/outline-ss-server_1.4.0_linux_x86_64.tar.gz -o outline-ss-server.tar.gz
