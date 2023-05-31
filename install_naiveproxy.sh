@@ -117,9 +117,8 @@ systemctl daemon-reload
 systemctl enable caddy
 systemctl start caddy
 
-# check if TCP congestion control is BBR algorithm, if not, enable it
 if ! lsmod | grep -q "bbr"; then
-    echo "TCP congestion control is not BBR algorithm, enable it now..."
+    echo "use BBR algorithm for TCP congestion control..."
     echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
     echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
     sysctl -p
