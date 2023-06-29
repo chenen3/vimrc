@@ -117,12 +117,9 @@ systemctl daemon-reload
 systemctl enable caddy
 systemctl start caddy
 
-if ! lsmod | grep -q "bbr"; then
-    echo "use BBR algorithm for TCP congestion control..."
-    echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
-    echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
-    sysctl -p
-fi
+# use BBR congestion control
+sudo sysctl -w net.ipv4.tcp_congestion_control=bbr
+sudo sysctl -w net.core.default_qdisc=fq
 
 echo ""
 echo "Installation completed, please use the following info to configure your client:"
