@@ -117,7 +117,7 @@ systemctl daemon-reload
 systemctl enable caddy
 systemctl start caddy
 
-# use BBR congestion control
+# enable BBR congestion control
 sudo sysctl -w net.ipv4.tcp_congestion_control=bbr
 sudo sysctl -w net.core.default_qdisc=fq
 
