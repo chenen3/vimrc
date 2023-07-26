@@ -118,8 +118,8 @@ systemctl enable caddy
 systemctl start caddy
 
 # enable BBR congestion control
-sudo sysctl -w net.ipv4.tcp_congestion_control=bbr
-sudo sysctl -w net.core.default_qdisc=fq
+sysctl -w net.ipv4.tcp_congestion_control=bbr
+sysctl -w net.core.default_qdisc=fq
 
 echo ""
 echo "Installation completed, please use the following info to configure your client:"
