@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>Label</key>
+    <string>naive</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/local/bin/naive</string>
+      <string>/usr/local/etc/naive.json</string>
+    </array>
+    <key>StandardErrorPath</key>
+    <string>/usr/local/var/log/naive.log</string>
+  </dict>
+</plist>
