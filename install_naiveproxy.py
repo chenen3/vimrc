@@ -4,7 +4,23 @@ import socket
 import string
 import secrets
 
-# TODO: testing
+caddyCfg = '''
+{
+    order forward_proxy before file_server
+}
+:443, %s {
+    forward_proxy {
+        basic_auth %s %s
+        hide_ip
+        hide_via
+        probe_resistance
+    }
+    file_server {
+        root /var/www/html
+    }
+}
+'''
+
 def install(domain, user, password):
     os.chdir("/tmp")
     os.system("wget https://github.com/klzgrad/forwardproxy/releases/latest/download/caddy-forwardproxy-naive.tar.xz")
@@ -12,24 +28,7 @@ def install(domain, user, password):
     os.system("mv caddy-forwardproxy-naive/caddy /usr/bin/caddy")
     os.system("mkdir /etc/caddy")
     with open("/etc/caddy/Caddyfile", "w") as f:
-        cfg = """
-        {
-            order forward_proxy before file_server
-        }
-        :443, {domain} {
-            tls me@$domain
-            forward_proxy {
-                basic_auth {user} {pass}
-                hide_ip
-                hide_via
-                probe_resistance
-            }
-            file_server {
-                root /var/www/html
-            }
-        }
-        """.format(domain=domain,user=user, password=password)
-        f.write(cfg)
+        f.write(caddyCfg % (domain, user, password))
 
 serviceConfig = '''
 [Unit]
