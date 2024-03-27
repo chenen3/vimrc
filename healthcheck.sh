@@ -7,5 +7,5 @@ nc -w 5 -z $host 443
 echo ""
 ping -c10 $host
 
-echo ""
-traceroute -q 1 -m 32 $host
+#echo ""
+#traceroute -q 1 -m 32 $host

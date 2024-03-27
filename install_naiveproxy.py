@@ -25,9 +25,9 @@ def install(domain, user, password):
     os.chdir("/tmp")
     os.system("wget https://github.com/klzgrad/forwardproxy/releases/latest/download/caddy-forwardproxy-naive.tar.xz")
     os.system("tar -xvf caddy-forwardproxy-naive.tar.xz")
-    os.system("mv caddy-forwardproxy-naive/caddy /usr/bin/caddy")
-    os.system("mkdir /etc/caddy")
-    with open("/etc/caddy/Caddyfile", "w") as f:
+    os.system("mv caddy-forwardproxy-naive/caddy /usr/local/bin/caddy")
+    os.system("mkdir /usr/local/etc")
+    with open("/usr/local/etc/Caddyfile", "w") as f:
         f.write(caddyCfg % (domain, user, password))
 
 serviceConfig = '''
@@ -40,8 +40,8 @@ Requires=network-online.target
 [Service]
 User=caddy
 Group=caddy
-ExecStart=/usr/bin/caddy run --environ --config /etc/caddy/Caddyfile
-ExecReload=/usr/bin/caddy reload --config /etc/caddy/Caddyfile
+ExecStart=/usr/bin/caddy run --environ --config /usr/local/etc/Caddyfile
+ExecReload=/usr/bin/caddy reload --config /usr/local/etc/Caddyfile
 TimeoutStopSec=5s
 LimitNOFILE=1048576
 LimitNPROC=512
@@ -94,7 +94,7 @@ if __name__ == "__main__":
 
     alphabet = string.ascii_letters + string.digits
     user = ''.join(secrets.choice(alphabet) for _ in range(8))
-    password = ''.join(secrets.choice(alphabet) for _ in range(16))
+    password = ''.join(secrets.choice(alphabet) for _ in range(8))
 
     install(domain, user, password)
     run()
