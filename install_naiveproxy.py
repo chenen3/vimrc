@@ -40,8 +40,8 @@ Requires=network-online.target
 [Service]
 User=caddy
 Group=caddy
-ExecStart=/usr/bin/caddy run --environ --config /usr/local/etc/Caddyfile
-ExecReload=/usr/bin/caddy reload --config /usr/local/etc/Caddyfile
+ExecStart=/usr/local/bin/caddy run --environ --config /usr/local/etc/Caddyfile
+ExecReload=/usr/local/bin/caddy reload --config /usr/local/etc/Caddyfile
 TimeoutStopSec=5s
 LimitNOFILE=1048576
 LimitNPROC=512
