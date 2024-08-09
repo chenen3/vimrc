@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 import urllib.request as request
 import socket
@@ -77,7 +79,7 @@ if __name__ == "__main__":
     if os.geteuid() != 0:
         print("Please run as root")
         exit(1)
-    
+
     domain = input("Please input your domain name: ")
     if domain == "":
         print("Domain name cannot be empty")
