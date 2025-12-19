@@ -1,55 +1,40 @@
-vim.cmd([[
-colorscheme quiet
+-- Options
+vim.opt.number = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.splitright = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
-filetype plugin on
-filetype indent on
-autocmd FileType python let &colorcolumn="80"
+-- Files & Backups
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.swapfile = false
 
-" Return to last edit position when opening files
-autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
-" Remember info about open buffers on close
-set viminfo^=%
+-- Appearance
+vim.cmd.colorscheme("shine")
 
-fun! TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
-endfun
-command! TrimWhitespace call TrimWhitespace()
-]])
+-- Mappings
+local keymap = vim.keymap.set
 
-vim.o.shiftwidth = 4
-vim.o.tabstop= 4
-vim.o.smartindent = true
-vim.wo.number = true
-vim.wo.cursorline = true
-vim.bo.swapfile = false
-vim.go.backup = false
-vim.go.writebackup = false
-vim.go.ignorecase = true
-vim.go.smartcase = true
-vim.go.incsearch = true
-vim.go.lazyredraw = true
-vim.go.showmatch = true
-vim.go.pumheight = 10
-vim.go.splitright = true
-vim.go.splitbelow = true
-vim.go.timeoutlen = 500
-vim.go.history = 700
-vim.go.wildignore = '*.o,*~,*.pyc'
-vim.go.laststatus = 3
-vim.go.winbar = '%f'
-vim.go.mouse = '' -- disable mouse, poor support currently
-vim.go.termguicolors = true -- 24bit true color
+-- Remap 0 to first non-blank character
+keymap("", "0", "^")
 
-vim.g.mapleader = ','
-vim.keymap.set('n', '<leader>ss', '<CMD>setlocal spell!<CR>') -- toggle spell checking
-vim.keymap.set('n', '0', '^') -- move to first non-blank character
-vim.keymap.set('x', 'p', 'pgvy') -- prepare for the second pasting
-vim.keymap.set('n', 'j', 'gj') -- treat long lines as break lines (useful when moving around in them)
-vim.keymap.set('n', 'k', 'gk')
+-- Paste in visual mode without overwriting register
+keymap("x", "p", "pgvy")
 
-require('plugin')
+-- Quick save and quit
+keymap("i", "<C-x>", "<Esc>:x<CR>")
+keymap("n", "<C-x>", ":x<CR>")
+keymap("n", "<C-q>", ":q<CR>")
+
+-- Last position jump (from our previous discussion)
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = "*",
+  callback = function()
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    if mark[1] > 0 and mark[1] <= vim.api.nvim_buf_line_count(0) then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
+  end,
+})

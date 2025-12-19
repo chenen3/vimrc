@@ -295,7 +295,6 @@ nnoremap Q <nop>
 cmap W! :w !sudo tee % >/dev/null
 
 nnoremap <leader>q :q<CR>
-nnoremap <leader>a :Ag 
 
 " python
 autocmd FileType python let &colorcolumn="80"
