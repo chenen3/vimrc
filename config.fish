@@ -9,7 +9,7 @@ set -gx GOPATH (go env GOPATH)
 fish_add_path $GOPATH/bin
 fish_add_path /Users/cse/.local/bin
 
-set --export GOPROXY "https://goproxy.cn,direct"
+# set --export GOPROXY "https://goproxy.cn,direct"
 set --export EDITOR "vim"
 set --export TMPDIR "/tmp"
 
