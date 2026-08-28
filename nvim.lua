@@ -89,3 +89,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     vim.lsp.buf.format({ async = false })
   end,
 })
+
+-- Keep the sign column fixed on screen so it never toggles dynamically.
+-- This completely prevents text shifting when errors appear or disappear
+vim.opt.signcolumn = "yes"
+
+-- disable preview on completion
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
